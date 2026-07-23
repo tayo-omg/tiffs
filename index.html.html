@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TIFFS — Lip Care Made For Our Skin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Josefin+Sans:wght@100;300;400&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{--plum:#3B0A45;--deep:#1E0328;--mid:#5C1A6E;--rg:#C9956C;--blush:#E8B4A0;--cream:#FDF6EE;--berry:#8B1A4A;--mag:#B5206E;--tl:#F5EBF0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--deep);color:var(--tl);font-family:'Josefin Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(20,2,30,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(232,180,200,.07);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;letter-spacing:6px;color:var(--cream);cursor:pointer;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{color:var(--blush);text-decoration:none;font-size:10px;letter-spacing:3px;text-transform:uppercase;transition:color .3s;cursor:pointer;}
+.nav-links a:hover{color:var(--cream);}
+.cart-btn{background:none;border:1px solid rgba(232,180,160,.3);color:var(--blush);padding:10px 18px;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:8px;}
+.cart-btn:hover{border-color:var(--mag);color:var(--cream);}
+.cart-count{background:var(--mag);color:#fff;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:10px;}
+
+/* PAGES */
+.page{display:none;}
+.page.active{display:block;}
+
+/* HERO */
+#hero{min-height:92vh;display:grid;place-items:center;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at 25% 45%,rgba(92,26,110,.55) 0%,rgba(59,10,69,.4) 30%,transparent 65%),var(--deep);}
+.blossom{position:absolute;border-radius:50%;pointer-events:none;border:1px solid rgba(232,180,200,.06);}
+.b1{width:520px;height:520px;top:-160px;right:-160px;}
+.b2{width:300px;height:300px;top:-40px;right:-20px;border-color:rgba(181,32,110,.07);}
+.b3{width:360px;height:360px;bottom:-120px;left:-120px;}
+.sparkle{position:absolute;width:2px;height:2px;border-radius:50%;background:rgba(232,180,160,.4);animation:twk 3s ease-in-out infinite;}
+@keyframes twk{0%,100%{opacity:.2;transform:scale(1);}50%{opacity:.8;transform:scale(1.6);}}
+.hero-content{position:relative;z-index:1;text-align:center;padding:0 24px;animation:fU 1.2s ease forwards;}
+@keyframes fU{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--rg);margin-bottom:28px;animation:fU 1.2s .2s both;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(64px,11vw,130px);font-weight:300;line-height:.88;letter-spacing:-2px;color:var(--cream);animation:fU 1.2s .4s both;}
+h1 em{font-style:italic;color:var(--blush);}
+.hero-tag{margin-top:28px;font-size:11px;letter-spacing:4px;color:rgba(232,180,160,.65);text-transform:uppercase;animation:fU 1.2s .6s both;}
+.hero-cta{margin-top:48px;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fU 1.2s .8s both;}
+.btn-p,.btn-g{padding:14px 38px;font-size:9px;letter-spacing:4px;text-transform:uppercase;display:inline-block;transition:all .3s;font-family:'Josefin Sans',sans-serif;font-weight:400;cursor:pointer;border:none;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);}
+.btn-p{background:var(--mag);color:#fff;}
+.btn-p:hover{background:var(--berry);}
+.btn-g{border:1px solid rgba(232,180,160,.35);color:var(--blush);background:transparent;}
+.btn-g:hover{border-color:var(--blush);color:var(--cream);}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:4px;color:rgba(232,180,160,.3);text-transform:uppercase;animation:fl 2s ease-in-out infinite;}
+@keyframes fl{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+
+/* TICKER */
+.ticker{background:var(--mag);padding:14px 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-block;animation:tick 22s linear infinite;}
+.ti{display:inline-block;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:#fff;padding:0 44px;}
+.td{color:rgba(255,255,255,.35);margin:0 6px;}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* SHARED SECTION */
+.slabel{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--rg);margin-bottom:14px;display:block;}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,64px);font-weight:300;line-height:1.1;color:var(--cream);}
+h2 em{font-style:italic;color:var(--blush);}
+
+/* FEATURED HOME */
+#featured{padding:100px 48px 90px;background:linear-gradient(180deg,rgba(13,1,21,.85) 0%,var(--deep) 100%);text-align:center;}
+.prev-grid{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:52px;}
+.prev-card{background:linear-gradient(140deg,rgba(92,26,110,.2),rgba(30,3,40,.45));border:1px solid rgba(232,180,200,.1);padding:32px 24px;cursor:pointer;transition:all .35s;width:172px;}
+.prev-card:hover{transform:translateY(-6px);border-color:rgba(181,32,110,.4);}
+.prev-swatch{width:42px;height:42px;border-radius:50%;margin:0 auto 14px;border:2px solid rgba(255,255,255,.12);}
+.prev-name{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--cream);margin-bottom:4px;}
+.prev-price{font-size:9px;letter-spacing:3px;color:var(--rg);}
+
+/* PRODUCTS PAGE */
+#page-products{padding-top:0;}
+.prod-top{padding:52px 48px 36px;text-align:center;background:linear-gradient(180deg,rgba(13,1,21,.8) 0%,transparent 100%);}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;margin:32px 0 40px;border-bottom:1px solid rgba(232,180,160,.12);}
+.tab{background:none;border:none;color:rgba(232,180,160,.45);padding:11px 22px;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;position:relative;}
+.tab::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--mag);transform:scaleX(0);transition:transform .3s;}
+.tab.active{color:var(--cream);}
+.tab.active::after{transform:scaleX(1);}
+.tab:hover{color:var(--blush);}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;max-width:1180px;margin:0 auto;padding:0 48px 90px;}
+.pcard{background:linear-gradient(140deg,rgba(92,26,110,.17),rgba(30,3,40,.5));border:1px solid rgba(232,180,200,.08);padding:36px 30px;position:relative;overflow:hidden;transition:all .4s;display:none;}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--mag),transparent);transform:scaleX(0);transition:transform .4s;}
+.pcard.show{display:block;}
+.pcard:hover{border-color:rgba(181,32,110,.3);transform:translateY(-3px);}
+.pcard:hover::before{transform:scaleX(1);}
+
+.product-photo{width:100%;height:230px;border-radius:14px;overflow:hidden;margin-bottom:22px;border:1px solid rgba(232,180,200,.14);background:linear-gradient(135deg,rgba(92,26,110,.38),rgba(30,3,40,.85));position:relative;display:flex;align-items:center;justify-content:center;}
+.product-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease,opacity .3s ease;}
+.pcard:hover .product-img,.bcard:hover .product-img{transform:scale(1.04);}
+.product-photo.image-failed::after{content:attr(data-label);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,180,160,.55);text-align:center;padding:18px;line-height:1.8;}
+.product-photo.image-failed .product-img{display:none;}
+.pbadge{display:inline-block;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--rg);border:1px solid rgba(201,149,108,.28);padding:3px 10px;margin-bottom:18px;}
+.pname{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--cream);margin-bottom:8px;line-height:1.2;}
+.pdesc{font-size:11px;line-height:1.9;color:rgba(232,180,160,.6);letter-spacing:.3px;margin-bottom:22px;}
+.pfoot{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.pprice{font-family:'Cormorant Garamond',serif;font-size:23px;color:var(--cream);font-weight:300;}
+.pswatch{display:flex;gap:4px;}
+.sw{width:13px;height:13px;border-radius:50%;border:1px solid rgba(255,255,255,.18);}
+.sw-br{background:#8B5E3C;}.sw-tc{background:#C27A5C;}.sw-nd{background:#C4967A;}
+.sw-cl{background:rgba(255,255,255,.35);}.sw-hl{background:linear-gradient(135deg,#C0C0C0,#E8B4FF,#C0C0C0);}
+.sw-mg{background:#B5206E;}.sw-wh{background:#F5F5F0;}.sw-pk{background:#F0A0A8;}
+.flavour-pick{width:100%;background:rgba(59,10,69,.4);border:1px solid rgba(232,180,200,.18);color:var(--tl);padding:8px 10px;font-family:'Josefin Sans',sans-serif;font-size:10px;margin-bottom:14px;cursor:pointer;outline:none;}
+.qty-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.qty-btn{background:rgba(92,26,110,.4);border:1px solid rgba(232,180,200,.2);color:var(--blush);width:28px;height:28px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;font-family:'Josefin Sans',sans-serif;line-height:1;}
+.qty-btn:hover{background:var(--mag);border-color:var(--mag);}
+.qty-val{font-size:14px;color:var(--cream);min-width:22px;text-align:center;}
+.add-btn{width:100%;padding:13px;background:transparent;border:1px solid rgba(181,32,110,.4);color:var(--blush);font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;}
+.add-btn:hover,.add-btn.done{background:var(--mag);border-color:var(--mag);color:#fff;}
+
+/* CART PAGE */
+#page-cart{padding-top:0;}
+.cart-page-wrap{max-width:900px;margin:0 auto;padding:52px 48px 90px;}
+.cart-page-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:36px;padding-bottom:18px;border-bottom:1px solid rgba(232,180,200,.1);}
+.cart-page-title{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--cream);}
+.clear-cart-btn{background:none;border:none;color:rgba(232,180,160,.35);font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:color .2s;}
+.clear-cart-btn:hover{color:var(--mag);}
+.cart-empty-msg{text-align:center;padding:70px 0;color:rgba(232,180,160,.35);font-size:11px;letter-spacing:3px;text-transform:uppercase;}
+/* cart item row */
+.citem{display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid rgba(232,180,200,.07);}
+.citem-swatch{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.15);flex-shrink:0;}
+.citem-info{}
+.citem-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--cream);line-height:1.2;}
+.citem-sub{font-size:9px;letter-spacing:2px;color:rgba(232,180,160,.5);text-transform:uppercase;margin-top:3px;}
+.citem-right{text-align:right;}
+.citem-price{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--blush);display:block;margin-bottom:8px;}
+.citem-remove{background:none;border:none;color:rgba(232,180,160,.3);cursor:pointer;font-size:13px;letter-spacing:1px;transition:color .2s;font-family:'Josefin Sans',sans-serif;}
+.citem-remove:hover{color:var(--mag);}
+/* cart totals */
+.cart-totals{margin-top:32px;padding-top:24px;border-top:1px solid rgba(232,180,200,.1);text-align:right;}
+.cart-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;}
+.cart-total-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(232,180,160,.55);}
+.cart-total-amt{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--cream);}
+.checkout-btn{padding:16px 52px;background:var(--mag);border:none;color:#fff;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:background .3s;}
+.checkout-btn:hover{background:var(--berry);}
+.checkout-btn:disabled{opacity:.3;cursor:not-allowed;}
+
+/* CHECKOUT PAGE */
+#page-checkout{padding-top:0;}
+.checkout-wrap{max-width:700px;margin:0 auto;padding:52px 48px 90px;}
+.checkout-title{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--cream);margin-bottom:8px;}
+.step-lbl{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--rg);margin-bottom:28px;display:block;}
+/* order summary box */
+.osummary{background:rgba(59,10,69,.22);border:1px solid rgba(232,180,200,.09);padding:18px 20px;margin-bottom:28px;}
+.osummary-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,180,160,.45);margin-bottom:12px;}
+.oline{display:flex;justify-content:space-between;font-size:11px;color:rgba(232,180,160,.65);padding:4px 0;letter-spacing:.3px;}
+.oline.ototal{border-top:1px solid rgba(232,180,200,.1);margin-top:8px;padding-top:10px;color:var(--cream);}
+.oline.ototal span:last-child{font-family:'Cormorant Garamond',serif;font-size:18px;}
+/* form */
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,180,160,.55);margin-bottom:7px;}
+.field input,.field textarea{width:100%;background:rgba(59,10,69,.28);border:1px solid rgba(232,180,200,.17);color:var(--tl);padding:12px 14px;font-family:'Josefin Sans',sans-serif;font-size:12px;letter-spacing:.4px;outline:none;transition:border-color .3s;resize:none;}
+.field input:focus,.field textarea:focus{border-color:rgba(181,32,110,.55);}
+.field input::placeholder,.field textarea::placeholder{color:rgba(232,180,160,.25);}
+.proceed-btn{width:100%;padding:16px;background:var(--mag);border:none;color:#fff;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:background .3s;margin-top:6px;}
+.proceed-btn:hover{background:var(--berry);}
+
+.netlify-hidden-form{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
+.hidden-bot-field{position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0;}
+.form-status{font-size:10px;letter-spacing:1px;color:rgba(232,180,160,.65);line-height:1.8;margin-top:14px;min-height:18px;}
+.form-status.error{color:#ffb3b3;}
+.form-status.success{color:var(--blush);}
+
+/* PAYMENT PAGE */
+#page-payment{padding-top:0;}
+.payment-wrap{max-width:600px;margin:0 auto;padding:52px 48px 90px;text-align:center;}
+.pay-bank{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);margin-bottom:6px;}
+.pay-acct{font-size:32px;letter-spacing:6px;color:var(--blush);font-family:'Cormorant Garamond',serif;margin:4px 0;}
+.pay-name{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,180,160,.45);margin-bottom:20px;}
+.pay-amt{font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--cream);margin:12px 0 6px;}
+.pay-note{font-size:10px;letter-spacing:.5px;color:rgba(232,180,160,.45);line-height:2;margin-bottom:28px;}
+.pay-box{background:rgba(59,10,69,.25);border:1px solid rgba(232,180,200,.12);padding:28px 32px;margin-bottom:28px;}
+.paid-btn{width:100%;padding:16px;background:rgba(139,26,74,.38);border:1px solid rgba(139,26,74,.6);color:var(--blush);font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:all .3s;}
+.paid-btn:hover{background:var(--berry);border-color:var(--berry);color:#fff;}
+.back-link{display:inline-block;margin-top:16px;background:none;border:none;color:rgba(232,180,160,.35);font-size:9px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'Josefin Sans',sans-serif;}
+.back-link:hover{color:var(--blush);}
+
+/* SUCCESS PAGE */
+#page-success{padding-top:0;}
+.success-wrap{max-width:600px;margin:0 auto;padding:80px 48px 90px;text-align:center;}
+.success-icon{font-size:56px;margin-bottom:20px;}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--cream);margin-bottom:14px;}
+.success-msg{font-size:11px;line-height:2.1;color:rgba(232,180,160,.6);letter-spacing:.4px;margin-bottom:30px;}
+.wa-btn{display:inline-block;padding:14px 38px;background:transparent;border:1px solid rgba(181,32,110,.4);color:var(--blush);font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:pointer;}
+.wa-btn:hover{background:var(--mag);border-color:var(--mag);color:#fff;}
+.cont-btn{display:block;margin-top:18px;background:none;border:none;color:rgba(232,180,160,.3);font-size:9px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'Josefin Sans',sans-serif;}
+.cont-btn:hover{color:var(--blush);}
+
+/* BUNDLES */
+#page-bundles{padding-top:0;}
+.bsec{padding:60px 48px 100px;text-align:center;}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:860px;margin:52px auto 0;}
+.bcard{border:1px solid rgba(232,180,200,.13);padding:50px 40px;position:relative;overflow:hidden;transition:all .4s;background:rgba(30,3,40,.55);}
+.bcard::after{content:'';position:absolute;bottom:-38px;right:-38px;width:105px;height:105px;border-radius:50%;border:1px solid rgba(232,180,200,.07);}
+.bcard:hover{transform:translateY(-5px);border-color:rgba(181,32,110,.3);}
+.btag{position:absolute;top:24px;right:-22px;background:var(--mag);color:#fff;font-size:8px;letter-spacing:3px;text-transform:uppercase;padding:5px 36px;transform:rotate(45deg);}
+.bicon{font-size:32px;margin-bottom:18px;display:block;}
+.bname{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);font-weight:300;margin-bottom:8px;}
+.bincludes{font-size:10px;line-height:2.3;color:rgba(232,180,160,.55);letter-spacing:1px;margin-bottom:22px;text-transform:uppercase;}
+.bprice{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--blush);display:block;margin-bottom:18px;}
+
+/* ABOUT */
+#page-about{padding-top:0;}
+.asec{padding:64px 48px 100px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1240px;margin:0 auto;}
+.avis{position:relative;height:500px;}
+.abox1{position:absolute;top:0;left:0;right:32px;bottom:32px;background:linear-gradient(135deg,var(--mid),var(--berry));display:flex;align-items:center;justify-content:center;}
+.abox2{position:absolute;bottom:0;right:0;width:145px;height:145px;background:var(--mag);display:flex;align-items:center;justify-content:center;}
+.abig{font-family:'Cormorant Garamond',serif;font-size:70px;font-style:italic;color:rgba(253,246,238,.07);font-weight:300;line-height:1;}
+.ayear{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--cream);text-align:center;}
+.atxt p{font-size:12px;line-height:2.3;color:rgba(232,180,160,.68);letter-spacing:.3px;margin-bottom:14px;}
+.atxt p strong{color:var(--cream);font-weight:400;}
+.amission{margin-top:30px;padding:24px 28px;border-left:2px solid var(--mag);background:rgba(181,32,110,.07);}
+.amission p{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--blush);line-height:1.6;margin:0;}
+
+/* FOOTER */
+footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
+.flogo{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--cream);letter-spacing:10px;margin-bottom:4px;}
+.ftag{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--rg);margin-bottom:40px;}
+.fsoc{display:flex;gap:14px;justify-content:center;margin-bottom:40px;}
+.fsoc a{color:rgba(232,180,160,.4);text-decoration:none;font-size:9px;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(232,180,200,.12);padding:9px 16px;transition:all .3s;}
+.fsoc a:hover{border-color:var(--mag);color:var(--blush);}
+.flinks{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;list-style:none;margin-bottom:40px;}
+.flinks a{color:rgba(232,180,160,.38);text-decoration:none;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:color .3s;}
+.flinks a:hover{color:var(--blush);}
+.fbottom{border-top:1px solid rgba(255,255,255,.05);padding-top:22px;font-size:9px;letter-spacing:2px;color:rgba(232,180,160,.2);text-transform:uppercase;}
+
+/* TOAST */
+#toast{position:sticky;bottom:18px;left:50%;transform:translateX(-50%);display:inline-block;background:var(--mag);color:#fff;padding:11px 24px;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0;transition:opacity .4s;pointer-events:none;z-index:50;margin:0 auto;}
+#toast.show{opacity:1;}
+#toast-wrap{text-align:center;height:0;overflow:visible;}
+
+@media(max-width:768px){
+  nav{padding:16px 18px;}
+  .nav-links{display:none;}
+  #featured,.bsec,footer{padding-left:18px;padding-right:18px;}
+  .pgrid,.cart-page-wrap,.checkout-wrap,.payment-wrap,.success-wrap{padding-left:18px;padding-right:18px;}
+  .asec{grid-template-columns:1fr;gap:40px;padding:52px 18px 80px;}
+  .avis{height:240px;}
+  .abig{font-size:42px;}
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+<span class="nav-logo" onclick="showPage('home')">TIFFS</span>
+<ul class="nav-links">
+<li><a onclick="showPage('home')">Home</a></li>
+<li><a onclick="showPage('products')">Products</a></li>
+<li><a onclick="showPage('bundles')">Bundles</a></li>
+<li><a onclick="showPage('about')">About</a></li>
+</ul>
+<button class="cart-btn" onclick="showPage('cart')">
+    ♡ Cart <span class="cart-count" id="cart-count">0</span>
+</button>
+</nav>
+<!-- ══════ HOME ══════ -->
+<div class="page active" id="page-home">
+<section id="hero">
+<div class="blossom b1"></div><div class="blossom b2"></div><div class="blossom b3"></div>
+<div id="sparkles-wrap"></div>
+<div class="hero-content">
+<p class="eyebrow">Est. 2025  ·  Lagos, Nigeria</p>
+<h1>TIFFS<br/><em>Lip Care</em></h1>
+<p class="hero-tag">Made for our skin  ·  High shine  ·  Long lasting  ·  Non-sticky</p>
+<div class="hero-cta">
+<button class="btn-p" onclick="showPage('products')">Shop Now</button>
+<button class="btn-g" onclick="showPage('about')">Our Story</button>
+</div>
+</div>
+<div class="scroll-hint">Scroll ↓</div>
+</section>
+<div class="ticker"><div class="ticker-inner">
+<span class="ti">High Shine<span class="td">✦</span></span><span class="ti">Non-Sticky<span class="td">✦</span></span><span class="ti">Long Lasting<span class="td">✦</span></span><span class="ti">Made For Our Skin<span class="td">✦</span></span><span class="ti">Handmade<span class="td">✦</span></span><span class="ti">Thoughtfully Formulated<span class="td">✦</span></span><span class="ti">High Shine<span class="td">✦</span></span><span class="ti">Non-Sticky<span class="td">✦</span></span><span class="ti">Long Lasting<span class="td">✦</span></span><span class="ti">Made For Our Skin<span class="td">✦</span></span><span class="ti">Handmade<span class="td">✦</span></span><span class="ti">Thoughtfully Formulated<span class="td">✦</span></span>
+</div></div>
+<section id="featured">
+<span class="slabel">The Collection</span>
+<h2>Glosses That <em>Actually</em><br/>Show Up For You</h2>
+<p style="font-size:11px;letter-spacing:1.5px;color:rgba(232,180,160,.5);margin:18px auto;max-width:420px;line-height:2;">Every shade crafted for melanin-rich lips. Every formula tested to perform.</p>
+<div class="prev-grid">
+<div class="prev-card" onclick="showPage('products')"><div class="prev-swatch" style="background:#8B5E3C;"></div><p class="prev-name">Coco Haze</p><p class="prev-price">₦3,000</p></div>
+<div class="prev-card" onclick="showPage('products')"><div class="prev-swatch" style="background:#C27A5C;"></div><p class="prev-name">Terracotta Rose</p><p class="prev-price">₦3,000</p></div>
+<div class="prev-card" onclick="showPage('products')"><div class="prev-swatch" style="background:rgba(255,255,255,.35);"></div><p class="prev-name">Crystal Clear</p><p class="prev-price">₦3,000</p></div>
+<div class="prev-card" onclick="showPage('products')"><div class="prev-swatch" style="background:#B5206E;"></div><p class="prev-name">Serendipity</p><p class="prev-price">₦3,000</p></div>
+</div>
+<div style="margin-top:46px;"><button class="btn-p" onclick="showPage('products')">View Full Collection</button></div>
+</section>
+<footer>
+<p class="flogo">TIFFS</p><p class="ftag">Lip Care Made For Our Skin</p>
+<div class="fsoc"><a href="https://instagram.com/glossbytiffs" target="_blank">☉ @glossbytiffs</a><a href="https://wa.me/2349020969644" target="_blank">✉ WhatsApp</a></div>
+<ul class="flinks"><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('products')">Shop</a></li><li><a onclick="showPage('bundles')">Bundles</a></li><li><a onclick="showPage('about')">About</a></li></ul>
+<p class="fbottom">© 2025 TIFFS — All rights reserved · Lagos, Nigeria</p>
+</footer>
+</div>
+<!-- ══════ PRODUCTS ══════ -->
+<div class="page" id="page-products">
+<div class="prod-top">
+<span class="slabel">The Full Collection</span>
+<h2>Every Product.<br/><em>Thoughtfully Made.</em></h2>
+</div>
+<div class="tabs">
+<button class="tab active" onclick="filterP('all',this)">All</button>
+<button class="tab" onclick="filterP('gloss',this)">Glosses</button>
+<button class="tab" onclick="filterP('balm',this)">Balm</button>
+<button class="tab" onclick="filterP('care',this)">Lip Care</button>
+</div>
+<div class="pgrid">
+<div class="pcard show" data-cat="gloss" data-name="Coco Haze" data-price="3000" data-swatch="#8B5E3C">
+<div class="product-photo" data-label="Coco Haze Lip Gloss photo"><img alt="Coco Haze Lip Gloss" class="product-img" data-img-base="coco-haze.jpg|coco-haze|coco-haze.jpg.jpg" src="coco-haze.jpg"/></div>
+<span class="pbadge">Lip Gloss</span><p class="pname">Coco Haze</p>
+<p class="pdesc">High shine, non-sticky, long lasting. A deep warm brown that complements every complexion.</p>
+<div class="pfoot"><span class="pprice">₦3,000</span><div class="pswatch"><div class="sw sw-br"></div></div></div>
+<div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
+<button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+</div>
+<div class="pcard show" data-cat="gloss" data-name="Terracotta Rose" data-price="3000" data-swatch="#C27A5C">
+<div class="product-photo" data-label="Terracotta Rose Lip Gloss photo"><img alt="Terracotta Rose Lip Gloss" class="product-img" data-img-base="terracotta-rose|terracotta-rose.jpg|terracotta-rose.jpg.jpg" src="terracotta-rose"/></div>
+<span class="pbadge">Lip Gloss</span><p class="pname">Terracotta Rose</p>
+<p class="pdesc">High shine, non-sticky, long lasting. Earthy-meets-rosy for that effortless everyday look.</p>
+<div class="pfoot"><span class="pprice">₦3,000</span><div class="pswatch"><div class="sw sw-tc"></div></div></div>
+<div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
+<button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+</div>
+<div class="pcard show" data-cat="gloss" data-name="Sway" data-price="3000" data-swatch="#C4967A">
+<div class="product-photo" data-label="Sway Lip Gloss photo"><img alt="Sway Lip Gloss" class="product-img" data-img-base="sway|sway.jpg|sway.jpg.jpg" src="sway"/></div>
+<span class="pbadge">Lip Gloss</span><p class="pname">Sway</p>
+<p class="pdesc">High shine, non-sticky, long lasting. A nude-blush shade that moves with you.</p>
+<div class="pfoot"><span class="pprice">₦3,000</span><div class="pswatch"><div class="sw sw-nd"></div></div></div>
+<div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
+<button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+</div>
+<div class="pcard show" data-cat="gloss" data-name="Serendipity" data-price="3000" data-swatch="#B5206E">
+<div class="product-photo" data-label="Serendipity Lip Gloss photo"><img alt="Serendipity Lip Gloss" class="product-img" data-img-base="lip-glo|lip-glo.jpg|serendipity|serendipity.jpg|serendipity.jpg.jpg" src="lip-glo"/></div>
+<span class="pbadge">Lip Gloss</span><p class="pname">Serendipity</p>
+<p class="pdesc">High shine, non-sticky, long lasting. A bold berry-magenta for when you want to be seen.</p>
+<div class="pfoot"><span class="pprice">₦3,000</span><div class="pswatch"><div class="sw sw-mg"></div></div></div>
+<div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
+<button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+</div>
+<div class="pcard show" data-cat="gloss" data-name="Crystal Clear" data-price="3000" data-swatch="rgba(200,200,220,0.5)">
+<div class="product-photo" data-label="Crystal Clear Lip Gloss photo"><img alt="Crystal Clear Lip Gloss" class="product-img" data-img-base="clear-gloss.jpg|clear-gloss|clear-gloss.jpg.jpg|crystal-clear|crystal-clear.jpg" src="clear-gloss.jpg"/></div>
+<span class="pbadge">Lip Gloss</span><p class="pname">Crystal Clear</p>
+<p class="pdesc">High shine, non-sticky, long lasting. Pure glass-like gloss that works over anything.</p>
+<div class="pfoot"><span class="pprice">₦3,000</span><div class="pswatch"><div class="sw sw-cl"></div></div></div>
+<div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
+<button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+</div>
+
+
+<div class="pcard show" data-cat="balm" data-name="Classic Lip Balm" data-price="2500" data-swatch="#F5F5F0">
+<div class="product-photo" data-label="Classic Lip Balm photo"><img alt="Classic Lip Balm" class="product-img" data-img-base="lip-balm.jpg|lip-balm|lip-balm.jpg.jpg" src="lip-balm.jpg"/></div>
+<span class="pbadge">Lip Balm</span><p class="pname">Classic Lip Balm</p>
+<p class="pdesc">Soft everyday lip balm for smooth, moisturised lips. Lightweight, non-sticky, and easy to carry.</p>
+<div class="pfoot"><span class="pprice">₦2,500</span><div class="pswatch"><div class="sw sw-wh"></div><div class="sw sw-pk"></div></div></div>
+<select class="flavour-pick"><option value="Peppermint">Peppermint</option><option value="Strawberry">Strawberry</option></select>
+<div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
+<button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+</div>
+
+<div class="pcard show" data-cat="care" data-name="Lip Mask" data-price="500" data-swatch="#5C1A6E">
+<div class="product-photo" data-label="Lip Mask photo"><img alt="Lip Mask" class="product-img" data-img-base="lip-mask|lip-mask.jpg|lip-care-set.jpg|lip-care-set" src="lip-mask"/></div>
+<span class="pbadge">Overnight Treatment</span><p class="pname">Lip Mask</p>
+<p class="pdesc">Overnight treatment. Softens and repairs dry lips while you sleep.</p>
+<div class="pfoot"><span class="pprice">₦500</span></div>
+<div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
+<button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+</div>
+<div class="pcard show" data-cat="care" data-name="Lip Brush" data-price="600" data-swatch="#C9956C">
+<div class="product-photo" data-label="Lip Brush photo"><img alt="Lip Brush" class="product-img" data-img-base="lip-scrub|lip-scrub.jpg|lip-brush|lip-brush.jpg|lip-care-set.jpg|lip-care-set" src="lip-scrub"/></div>
+<span class="pbadge">Applicator</span><p class="pname">Lip Brush</p>
+<p class="pdesc">Precision application for gloss and balm. Smooth, even, mess-free.</p>
+<div class="pfoot"><span class="pprice">₦600</span></div>
+<div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
+<button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+</div>
+</div>
+<div id="toast-wrap"><div id="toast"></div></div>
+</div>
+<!-- ══════ CART ══════ -->
+<div class="page" id="page-cart">
+<div class="cart-page-wrap">
+<div class="cart-page-header">
+<span class="cart-page-title">Your Cart</span>
+<button class="clear-cart-btn" onclick="clearCart()">Clear cart</button>
+</div>
+<div id="cart-body"></div>
+<div class="cart-totals" id="cart-totals-section" style="display:none;">
+<div class="cart-total-row">
+<span class="cart-total-label">Total</span>
+<span class="cart-total-amt" id="cart-total-amt">₦0</span>
+</div>
+<button class="checkout-btn" onclick="showPage('checkout')">Proceed to Checkout</button>
+</div>
+</div>
+</div>
+<!-- ══════ CHECKOUT ══════ -->
+<div class="page" id="page-checkout">
+<div class="checkout-wrap">
+<p class="checkout-title">Complete Order</p>
+<span class="step-lbl">Step 1 of 2 — Your Details</span>
+<div class="osummary" id="checkout-summary"></div>
+<div class="field"><label>Full Name *</label><input id="f-name" placeholder="Your full name" type="text"/></div>
+<div class="field"><label>Phone Number *</label><input id="f-phone" placeholder="e.g. 08012345678" type="tel"/></div>
+<div class="field"><label>Delivery Address *</label><textarea id="f-address" placeholder="Full delivery address including city" rows="3"></textarea></div>
+<div class="field"><label>Additional Details <span style="color:rgba(232,180,160,.3);">(optional)</span></label><textarea id="f-note" placeholder="Any special requests…" rows="2"></textarea></div>
+<button class="proceed-btn" onclick="goToPayment()">Proceed to Payment</button>
+<div style="margin-top:12px;text-align:center;"><button class="back-link" onclick="showPage('cart')">← Back to Cart</button></div>
+</div>
+</div>
+<!-- ══════ PAYMENT ══════ -->
+<div class="page" id="page-payment">
+<div class="payment-wrap">
+<span class="slabel" style="display:block;margin-bottom:8px;">Step 2 of 2 — Bank Transfer</span>
+<p style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--cream);margin-bottom:28px;">Make Payment</p>
+<div class="pay-box">
+<p class="pay-bank">ACCESS BANK</p>
+<p class="pay-acct">1828128839</p>
+<p class="pay-name">BOLUWATIFE KANYINSOLA AKINJEJI</p>
+<div style="margin:16px 0 18px;padding:14px 0;border-top:1px solid rgba(232,180,200,.12);border-bottom:1px solid rgba(232,180,200,.12);">
+<p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(232,180,160,.55);line-height:2;">Bank: Access Bank</p>
+<p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(232,180,160,.55);line-height:2;">Account No: 1828128839</p>
+<p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(232,180,160,.55);line-height:2;">Account Name: Boluwatife Kanyinsola Akinjeji</p>
+</div>
+<p class="pay-amt" id="pay-display-amt"></p>
+<p class="pay-note">Transfer the exact amount above.<br/>After payment, tap the button below — your order will be submitted directly to TIFFS.</p>
+</div>
+<button class="paid-btn" onclick="confirmPayment()">I've Made Payment ✓</button>
+<p class="form-status" id="order-submit-status"></p>
+<button class="back-link" onclick="showPage('checkout')">← Back to Details</button>
+</div>
+</div>
+<!-- ══════ SUCCESS ══════ -->
+<div class="page" id="page-success">
+<div class="success-wrap">
+<div class="success-icon">💌</div>
+<p class="success-title">Order Received!</p>
+<p class="success-msg">Thank you! Your order details have been sent to TIFFS.<br/>We'll confirm your payment and reach out via WhatsApp<br/>to arrange delivery.</p>
+<a class="wa-btn" href="#" id="wa-final-btn" target="_blank">Send confirmation via WhatsApp ↗</a>
+<button class="cont-btn" onclick="startOver()">Continue Shopping</button>
+</div>
+</div>
+<!-- ══════ BUNDLES ══════ -->
+<div class="page" id="page-bundles">
+<div class="bsec">
+<span class="slabel">Save More</span>
+<h2>Built For <em>The Whole</em><br/>Routine</h2>
+<p style="font-size:11px;letter-spacing:1.5px;color:rgba(232,180,160,.48);margin:16px auto;max-width:400px;line-height:2;">Everything your lips need, curated and ready.</p>
+<div class="bgrid">
+<div class="bcard" data-name="Starter Kit (1 Gloss + 1 Lip Balm)" data-price="5500">
+<div class="product-photo" data-label="Starter Kit photo"><img alt="Starter Kit" class="product-img" data-img-base="lip-care-set.jpg|lip-care-set|lip-balm.jpg|lip-balm|sway.jpg|sway" src="lip-care-set.jpg"/></div>
+<span class="btag">Popular</span>
+<span class="bicon">💋</span>
+<p class="bname">Starter Kit</p>
+<p class="bincludes">1 Lip Gloss of your choice<br/>+ 1 Classic Lip Balm</p>
+<span class="bprice">₦5,500</span>
+<div class="qty-row" style="justify-content:center;"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
+<button class="add-btn" onclick="addBundleToCart(this)" style="margin-top:12px;">Add to Cart</button>
+</div>
+<div class="bcard" data-name="Full Lip Care Set (3 Glosses + Lip Balm + Mask + Brush)" data-price="12600">
+<div class="product-photo" data-label="Full Lip Care Set photo"><img alt="Full Lip Care Set" class="product-img" data-img-base="lip-care-set.jpg|lip-care-set|full-lip-care-set.jpg|full-lip-care-set" src="lip-care-set.jpg"/></div>
+<span class="btag">Best Value</span>
+<span class="bicon">✨</span>
+<p class="bname">Full Lip Care Set</p>
+<p class="bincludes">3 Glosses of your choice<br/>+ Classic Lip Balm<br/>+ Lip Mask + Lip Brush</p>
+<span class="bprice">₦12,600</span>
+<div class="qty-row" style="justify-content:center;"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
+<button class="add-btn" onclick="addBundleToCart(this)" style="margin-top:12px;">Add to Cart</button>
+</div>
+</div>
+<div id="toast-wrap-b"><div id="toast-b" style="display:inline-block;background:var(--mag);color:#fff;padding:11px 24px;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0;transition:opacity .4s;pointer-events:none;margin-top:20px;"></div></div>
+</div>
+</div>
+<!-- ══════ ABOUT ══════ -->
+<div class="page" id="page-about">
+<div class="asec">
+<div class="avis">
+<div class="abox1"><p class="abig">TIFFS</p></div>
+<div class="abox2"><p class="ayear">Est.<br/>2025</p></div>
+</div>
+<div class="atxt">
+<span class="slabel">Our Story</span>
+<h2 style="margin-bottom:26px;">For You.<br/><em>By TIFFS.</em></h2>
+<p>TIFFS started from a simple truth: <strong>finding lip products that actually work on dark skin shouldn't be a struggle.</strong></p>
+<p>What began as <strong>Gloss'd by Tiffs</strong> has grown into a full lip care experience — glosses, balms, scrubs, masks, and brushes.</p>
+<p>Every product is <strong>handmade, thoughtfully formulated, and tested on the skin it's made for.</strong></p>
+<div class="amission"><p>"For You. By TIFFS."</p></div>
+</div>
+</div>
+<div class="ticker"><div class="ticker-inner">
+<span class="ti">Handmade<span class="td">✦</span></span><span class="ti">For Our Skin<span class="td">✦</span></span><span class="ti">Honest Formulas<span class="td">✦</span></span><span class="ti">Est. 2025<span class="td">✦</span></span><span class="ti">Lagos, Nigeria<span class="td">✦</span></span><span class="ti">Handmade<span class="td">✦</span></span><span class="ti">For Our Skin<span class="td">✦</span></span><span class="ti">Honest Formulas<span class="td">✦</span></span><span class="ti">Est. 2025<span class="td">✦</span></span><span class="ti">Lagos, Nigeria<span class="td">✦</span></span>
+</div></div>
+</div>
+<!-- Real Netlify order form. Netlify detects this static form at deploy time. -->
+<form class="netlify-hidden-form" data-netlify="true" method="POST" name="tiffs-order" netlify-honeypot="bot-field">
+<input name="form-name" type="hidden" value="tiffs-order"/>
+<p class="hidden-bot-field"><label>Leave this field empty: <input name="bot-field"/></label></p>
+<input data-remove-prefix="" name="subject" type="hidden" value="New TIFFS Order"/>
+<input name="name" type="hidden"/>
+<input name="phone" type="hidden"/>
+<input name="address" type="hidden"/>
+<input name="note" type="hidden"/>
+<input name="order_items" type="hidden"/>
+<input name="total" type="hidden"/>
+<input name="payment_status" type="hidden"/>
+<input name="payment_bank" type="hidden"/>
+<input name="payment_account_number" type="hidden"/>
+<input name="payment_account_name" type="hidden"/>
+<input name="submitted_at" type="hidden"/>
+</form>
+<script>
+// ── sparkles
+(function(){
+  var w=document.getElementById('sparkles-wrap');
+  if(!w){return;}
+  w.style.cssText='position:absolute;inset:0;pointer-events:none;overflow:hidden;';
+  for(var i=0;i<24;i++){
+    var d=document.createElement('div');d.className='sparkle';
+    d.style.left=Math.random()*100+'%';d.style.top=Math.random()*100+'%';
+    d.style.animationDelay=(Math.random()*4)+'s';d.style.animationDuration=(2+Math.random()*3)+'s';
+    w.appendChild(d);
+  }
+})();
+
+
+// ── PRODUCT IMAGES
+function initProductImages(){
+  var imgs=document.querySelectorAll('img.product-img[data-img-base]');
+  var exts=['jpg','jpeg','png','webp','JPG','JPEG','PNG','WEBP'];
+  imgs.forEach(function(img){
+    var bases=img.getAttribute('data-img-base').split('|').map(function(x){return x.trim();}).filter(Boolean);
+    var choices=[];
+    function addChoice(src){
+      if(!src){return;}
+      if(choices.indexOf(src)===-1){choices.push(src);}
+      if(src.charAt(0)!=='.' && choices.indexOf('./'+src)===-1){choices.push('./'+src);}
+    }
+    bases.forEach(function(base){
+      addChoice(base);
+      exts.forEach(function(ext){
+        addChoice(base+'.'+ext);
+        // This fixes the common Windows issue where a file looks like coco-haze.jpg
+        // but the real hidden filename becomes coco-haze.jpg.jpg.
+        addChoice(base+'.jpg.'+ext);
+      });
+    });
+    var index=0;
+    var wrap=img.closest('.product-photo');
+    function tryNext(){
+      if(index>=choices.length){
+        if(wrap){wrap.classList.add('image-failed');}
+        return;
+      }
+      img.src=choices[index++];
+    }
+    img.onerror=tryNext;
+    img.onload=function(){if(wrap){wrap.classList.remove('image-failed');}};
+    tryNext();
+  });
+}
+initProductImages();
+
+// ── CART
+var cart=[];
+var orderInfo={};
+
+function fmt(n){return '₦'+Number(n).toLocaleString();}
+function total(){return cart.reduce(function(s,i){return s+i.price*i.qty;},0);}
+function totalQty(){return cart.reduce(function(s,i){return s+i.qty;},0);}
+
+function updateNav(){
+  var count=document.getElementById('cart-count');
+  if(count){count.textContent=totalQty();}
+}
+
+function renderCartPage(){
+  var body=document.getElementById('cart-body');
+  var tots=document.getElementById('cart-totals-section');
+  var totalAmt=document.getElementById('cart-total-amt');
+
+  // This prevents the "Cannot read properties of null (reading 'style')" error
+  // if the cart section has not loaded yet.
+  if(!body || !tots){return;}
+
+  if(cart.length===0){
+    body.innerHTML='<div class="cart-empty-msg">Your cart is empty</div>';
+    tots.style.display='none';
+    return;
+  }
+
+  tots.style.display='block';
+  if(totalAmt){totalAmt.textContent=fmt(total());}
+
+  body.innerHTML='';
+
+  cart.forEach(function(item,i){
+    var row=document.createElement('div');
+    row.className='citem';
+
+    var sw=document.createElement('div');
+    sw.className='citem-swatch';
+    sw.style.background=item.swatch || '#5C1A6E';
+
+    var info=document.createElement('div');
+    info.className='citem-info';
+
+    var name=document.createElement('p');
+    name.className='citem-name';
+    name.textContent=item.name;
+
+    info.appendChild(name);
+
+    if(item.flavour){
+      var subFlavour=document.createElement('p');
+      subFlavour.className='citem-sub';
+      subFlavour.textContent=item.flavour;
+      info.appendChild(subFlavour);
+    }
+
+    var qty=document.createElement('p');
+    qty.className='citem-sub';
+    qty.textContent='Qty: '+item.qty;
+    info.appendChild(qty);
+
+    var right=document.createElement('div');
+    right.className='citem-right';
+
+    var price=document.createElement('span');
+    price.className='citem-price';
+    price.textContent=fmt(item.price*item.qty);
+
+    var remove=document.createElement('button');
+    remove.className='citem-remove';
+    remove.type='button';
+    remove.textContent='Remove';
+    remove.onclick=function(){removeItem(i);};
+
+    right.appendChild(price);
+    right.appendChild(remove);
+
+    row.appendChild(sw);
+    row.appendChild(info);
+    row.appendChild(right);
+    body.appendChild(row);
+  });
+}
+
+function removeItem(idx){
+  cart.splice(idx,1);
+  updateNav();
+  renderCartPage();
+}
+
+function clearCart(){
+  cart=[];
+  updateNav();
+  renderCartPage();
+}
+
+function addToCart(btn){
+  var card=btn.closest('.pcard');
+  var name=card.dataset.name;
+  var price=parseInt(card.dataset.price);
+  var swatch=card.dataset.swatch;
+  var qty=parseInt(card.querySelector('.qty-val').textContent);
+  var sel=card.querySelector('.flavour-pick');
+  var flavour=sel?sel.value:'';
+  var key=name+(flavour?'|'+flavour:'');
+  var found=null;
+  for(var i=0;i<cart.length;i++){if(cart[i].key===key){found=cart[i];break;}}
+  if(found){found.qty+=qty;}
+  else{cart.push({key:key,name:name,price:price,swatch:swatch,qty:qty,flavour:flavour});}
+  updateNav();
+  btn.textContent='Added ✓';btn.classList.add('done');
+  setTimeout(function(){btn.textContent='Add to Cart';btn.classList.remove('done');},1400);
+  showToast(name+' added!','toast');
+}
+
+function addBundleToCart(btn){
+  var card=btn.closest('.bcard');
+  var name=card.dataset.name;
+  var price=parseInt(card.dataset.price);
+  var qty=parseInt(card.querySelector('.qty-val').textContent);
+  var swatch='linear-gradient(135deg,#B5206E,#5C1A6E)';
+  var found=null;
+  for(var i=0;i<cart.length;i++){if(cart[i].key===name){found=cart[i];break;}}
+  if(found){found.qty+=qty;}
+  else{cart.push({key:name,name:name,price:price,swatch:swatch,qty:qty,flavour:''});}
+  updateNav();
+  btn.textContent='Added ✓';btn.classList.add('done');
+  setTimeout(function(){btn.textContent='Add to Cart';btn.classList.remove('done');},1400);
+  showToast(name+' added!','toast-b');
+}
+
+function chQty(btn,d){
+  var row=btn.closest('.qty-row');
+  var v=row.querySelector('.qty-val');
+  v.textContent=Math.max(1,parseInt(v.textContent)+d);
+}
+
+// ── CHECKOUT FLOW
+function buildCheckoutSummary(){
+  var summary=document.getElementById('checkout-summary');
+  if(!summary){return;}
+
+  if(cart.length===0){
+    summary.innerHTML='<p class="osummary-title">Your Order</p><div class="oline"><span>Your cart is empty</span><span>'+fmt(0)+'</span></div>';
+    return;
+  }
+
+  var html='<p class="osummary-title">Your Order</p>';
+  for(var i=0;i<cart.length;i++){
+    var it=cart[i];
+    html+='<div class="oline"><span>'+it.name+(it.flavour?' ('+it.flavour+')':'')+'  ×'+it.qty+'</span><span>'+fmt(it.price*it.qty)+'</span></div>';
+  }
+  html+='<div class="oline ototal"><span>Total</span><span>'+fmt(total())+'</span></div>';
+  summary.innerHTML=html;
+}
+
+function goToPayment(){
+  if(cart.length===0){alert('Your cart is empty. Please add at least one product.');showPage('products');return;}
+
+  var name=document.getElementById('f-name').value.trim();
+  var phone=document.getElementById('f-phone').value.trim();
+  var addr=document.getElementById('f-address').value.trim();
+  if(!name||!phone||!addr){alert('Please fill in your name, phone number and delivery address.');return;}
+
+  orderInfo={name:name,phone:phone,address:addr,note:document.getElementById('f-note').value.trim()};
+
+  var payAmt=document.getElementById('pay-display-amt');
+  if(payAmt){payAmt.textContent=fmt(total());}
+
+  showPage('payment');
+}
+
+function buildOrderText(){
+  var lines=[];
+  for(var i=0;i<cart.length;i++){
+    var it=cart[i];
+    lines.push(it.name+(it.flavour?' ('+it.flavour+')':'')+' ×'+it.qty+' = '+fmt(it.price*it.qty));
+  }
+  return lines.join('\n');
+}
+
+function buildWhatsAppMessage(){
+  var msg='*NEW TIFFS ORDER* 🛍️\n\n';
+  msg+='*Name:* '+orderInfo.name+'\n';
+  msg+='*Phone:* '+orderInfo.phone+'\n';
+  msg+='*Address:* '+orderInfo.address+'\n';
+  if(orderInfo.note)msg+='*Note:* '+orderInfo.note+'\n';
+  msg+='\n*ORDER*\n';
+  for(var i=0;i<cart.length;i++){
+    var it=cart[i];
+    msg+='• '+it.name+(it.flavour?' ('+it.flavour+')':'')+'  ×'+it.qty+'  =  '+fmt(it.price*it.qty)+'\n';
+  }
+  msg+='\n*TOTAL: '+fmt(total())+'*';
+  msg+='\n\n✅ Payment of '+fmt(total())+' sent to ACCESS BANK 1828128839 — BOLUWATIFE KANYINSOLA AKINJEJI';
+  return msg;
+}
+
+function encodeNetlifyData(data){
+  return Object.keys(data).map(function(key){
+    return encodeURIComponent(key)+'='+encodeURIComponent(data[key]);
+  }).join('&');
+}
+
+function submitNetlifyOrder(){
+  var formData={
+    'form-name':'tiffs-order',
+    'name':orderInfo.name,
+    'phone':orderInfo.phone,
+    'address':orderInfo.address,
+    'note':orderInfo.note || '',
+    'order_items':buildOrderText(),
+    'total':fmt(total()),
+    'payment_status':'Customer clicked: I have made payment',
+    'payment_bank':'ACCESS BANK',
+    'payment_account_number':'1828128839',
+    'payment_account_name':'BOLUWATIFE KANYINSOLA AKINJEJI',
+    'submitted_at':new Date().toLocaleString()
+  };
+
+  return fetch('/', {
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:encodeNetlifyData(formData)
+  }).then(function(response){
+    if(!response.ok){throw new Error('Netlify form submission failed');}
+    return response;
+  });
+}
+
+async function confirmPayment(){
+  var status=document.getElementById('order-submit-status');
+  var payBtn=document.querySelector('.paid-btn');
+
+  if(cart.length===0){
+    alert('Your cart is empty. Please add at least one product.');
+    showPage('products');
+    return;
+  }
+
+  if(!orderInfo.name || !orderInfo.phone || !orderInfo.address){
+    alert('Please complete your details first.');
+    showPage('checkout');
+    return;
+  }
+
+  var msg=buildWhatsAppMessage();
+  var url='https://wa.me/2349020969644?text='+encodeURIComponent(msg);
+  var waBtn=document.getElementById('wa-final-btn');
+  if(waBtn){waBtn.href=url;}
+
+  if(window.location.protocol==='file:'){
+    if(status){
+      status.textContent='This real order form will submit only after you deploy on Netlify. Upload the site, then test it using the live Netlify link.';
+      status.className='form-status error';
+    }
+    alert('This real order form works after deployment on Netlify. Please upload the site to Netlify, then test the live link.');
+    return;
+  }
+
+  try{
+    if(status){
+      status.textContent='Sending your order... please wait.';
+      status.className='form-status';
+    }
+    if(payBtn){
+      payBtn.disabled=true;
+      payBtn.textContent='Sending Order...';
+    }
+
+    await submitNetlifyOrder();
+
+    if(status){
+      status.textContent='Order sent successfully.';
+      status.className='form-status success';
+    }
+    showPage('success');
+  }catch(err){
+    console.error(err);
+    if(status){
+      status.textContent='Order could not be sent. Please check your internet connection or Netlify form settings.';
+      status.className='form-status error';
+    }
+    alert('Order could not be sent. Please check your internet connection or Netlify form settings.');
+  }finally{
+    if(payBtn){
+      payBtn.disabled=false;
+      payBtn.textContent="I've Made Payment ✓";
+    }
+  }
+}
+
+function startOver(){
+  clearCart();
+  document.getElementById('f-name').value='';
+  document.getElementById('f-phone').value='';
+  document.getElementById('f-address').value='';
+  document.getElementById('f-note').value='';
+  showPage('home');
+}
+
+// ── PAGE ROUTING
+function showPage(name){
+  var page=document.getElementById('page-'+name);
+  if(!page){return;}
+
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  page.classList.add('active');
+
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  if(name==='cart'){renderCartPage();}
+  if(name==='checkout'){buildCheckoutSummary();}
+}
+
+// ── FILTER
+function filterP(cat,btn){
+  document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active');});
+  if(btn){btn.classList.add('active');}
+
+  document.querySelectorAll('.pcard').forEach(function(c){
+    c.classList.toggle('show',cat==='all'||c.dataset.cat===cat);
+  });
+}
+
+// ── TOAST
+var toastTimers={};
+function showToast(msg,id){
+  var t=document.getElementById(id);
+  if(!t){return;}
+
+  t.textContent=msg;
+  t.style.opacity='1';
+  t.classList.add('show');
+
+  clearTimeout(toastTimers[id]);
+  toastTimers[id]=setTimeout(function(){
+    t.style.opacity='0';
+    t.classList.remove('show');
+  },2000);
+}
+</script>
+</body>
+</html>
