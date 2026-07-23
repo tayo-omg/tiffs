@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIFFS Order Form Detection</title>
+</head>
+<body>
+  <!--
+    Do not delete this file.
+    Netlify reads this static HTML file during deployment so it can detect the TIFFS order form.
+    The main website submits orders to this form name: tiffs-order.
+  -->
+  <form name="tiffs-order" method="POST" netlify data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="tiffs-order">
+    <p hidden>
+      <label>Do not fill this out: <input name="bot-field"></label>
+    </p>
+    <p><label>Name <input type="text" name="name"></label></p>
+    <p><label>Phone <input type="text" name="phone"></label></p>
+    <p><label>Address <textarea name="address"></textarea></label></p>
+    <p><label>Note <textarea name="note"></textarea></label></p>
+    <p><label>Order Items <textarea name="order_items"></textarea></label></p>
+    <p><label>Total <input type="text" name="total"></label></p>
+    <p><label>Payment Status <input type="text" name="payment_status"></label></p>
+    <p><label>Payment Bank <input type="text" name="payment_bank"></label></p>
+    <p><label>Payment Account Number <input type="text" name="payment_account_number"></label></p>
+    <p><label>Payment Account Name <input type="text" name="payment_account_name"></label></p>
+    <p><label>Submitted At <input type="text" name="submitted_at"></label></p>
+    <p><button type="submit">Submit</button></p>
+  </form>
+</body>
+</html>
