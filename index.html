@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -27,8 +26,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .page.active{display:block;}
 
 /* HERO */
-#hero{min-height:92vh;display:grid;place-items:center;position:relative;overflow:hidden;
-  background:radial-gradient(ellipse at 25% 45%,rgba(92,26,110,.55) 0%,rgba(59,10,69,.4) 30%,transparent 65%),var(--deep);}
+#hero{min-height:92vh;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 25% 45%,rgba(92,26,110,.55) 0%,rgba(59,10,69,.4) 30%,transparent 65%),var(--deep);}
 .blossom{position:absolute;border-radius:50%;pointer-events:none;border:1px solid rgba(232,180,200,.06);}
 .b1{width:520px;height:520px;top:-160px;right:-160px;}
 .b2{width:300px;height:300px;top:-40px;right:-20px;border-color:rgba(181,32,110,.07);}
@@ -71,6 +69,17 @@ h2 em{font-style:italic;color:var(--blush);}
 .prev-name{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--cream);margin-bottom:4px;}
 .prev-price{font-size:9px;letter-spacing:3px;color:var(--rg);}
 
+/* PERFUME TEASER */
+.perfume-teaser{position:relative;overflow:hidden;padding:90px 48px;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(181,32,110,.25),transparent 55%),linear-gradient(135deg,rgba(59,10,69,.7),rgba(13,1,21,.98));border-top:1px solid rgba(232,180,200,.08);border-bottom:1px solid rgba(232,180,200,.08);}
+.perfume-teaser::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(232,180,200,.07);top:-170px;right:-80px;}
+.perfume-teaser::after{content:'';position:absolute;width:220px;height:220px;border-radius:50%;border:1px solid rgba(181,32,110,.08);bottom:-130px;left:-70px;}
+.perfume-inner{position:relative;z-index:2;max-width:700px;margin:0 auto;}
+.coming-pill{display:inline-block;padding:6px 15px;margin-bottom:20px;border:1px solid rgba(201,149,108,.35);color:var(--rg);font-size:8px;letter-spacing:4px;text-transform:uppercase;}
+.perfume-title{font-family:'Cormorant Garamond',serif;color:var(--cream);font-size:clamp(38px,6vw,65px);font-weight:300;line-height:1.05;margin-bottom:18px;}
+.perfume-title em{color:var(--blush);font-style:italic;}
+.perfume-copy{max-width:560px;margin:0 auto;font-size:11px;line-height:2.1;letter-spacing:.7px;color:rgba(232,180,160,.58);}
+.perfume-size{margin-top:22px;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--rg);}
+
 /* PRODUCTS PAGE */
 #page-products{padding-top:0;}
 .prod-top{padding:52px 48px 36px;text-align:center;background:linear-gradient(180deg,rgba(13,1,21,.8) 0%,transparent 100%);}
@@ -86,7 +95,6 @@ h2 em{font-style:italic;color:var(--blush);}
 .pcard.show{display:block;}
 .pcard:hover{border-color:rgba(181,32,110,.3);transform:translateY(-3px);}
 .pcard:hover::before{transform:scaleX(1);}
-
 .product-photo{width:100%;height:230px;border-radius:14px;overflow:hidden;margin-bottom:22px;border:1px solid rgba(232,180,200,.14);background:linear-gradient(135deg,rgba(92,26,110,.38),rgba(30,3,40,.85));position:relative;display:flex;align-items:center;justify-content:center;}
 .product-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease,opacity .3s ease;}
 .pcard:hover .product-img,.bcard:hover .product-img{transform:scale(1.04);}
@@ -109,6 +117,20 @@ h2 em{font-style:italic;color:var(--blush);}
 .qty-val{font-size:14px;color:var(--cream);min-width:22px;text-align:center;}
 .add-btn{width:100%;padding:13px;background:transparent;border:1px solid rgba(181,32,110,.4);color:var(--blush);font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;}
 .add-btn:hover,.add-btn.done{background:var(--mag);border-color:var(--mag);color:#fff;}
+.coming-btn{width:100%;padding:13px;background:rgba(181,32,110,.08);border:1px solid rgba(181,32,110,.3);color:rgba(232,180,160,.55);font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:not-allowed;}
+.perfume-placeholder{width:100%;height:230px;border-radius:14px;margin-bottom:22px;border:1px solid rgba(232,180,200,.14);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(181,32,110,.25),transparent 50%),linear-gradient(145deg,rgba(92,26,110,.4),rgba(30,3,40,.95));}
+.perfume-bottle{font-family:'Cormorant Garamond',serif;font-size:58px;line-height:1;color:rgba(232,180,160,.75);}
+.perfume-placeholder span:last-child{margin-top:12px;font-size:8px;letter-spacing:4px;color:rgba(232,180,160,.4);text-transform:uppercase;}
+
+/* HOW TO USE */
+.how-to-use{padding:90px 48px 100px;background:linear-gradient(180deg,var(--deep),rgba(59,10,69,.28));text-align:center;}
+.how-intro{max-width:560px;margin:16px auto 46px;font-size:11px;line-height:2;letter-spacing:1px;color:rgba(232,180,160,.5);}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;max-width:1100px;margin:0 auto;}
+.how-card{text-align:left;padding:30px 26px;border:1px solid rgba(232,180,200,.1);background:linear-gradient(140deg,rgba(92,26,110,.17),rgba(30,3,40,.55));transition:transform .35s,border-color .35s;}
+.how-card:hover{transform:translateY(-4px);border-color:rgba(181,32,110,.35);}
+.how-number{display:block;font-family:'Cormorant Garamond',serif;font-size:30px;color:rgba(181,32,110,.55);margin-bottom:10px;}
+.how-name{font-family:'Cormorant Garamond',serif;color:var(--cream);font-size:23px;margin-bottom:10px;}
+.how-copy{font-size:11px;line-height:2;color:rgba(232,180,160,.62);}
 
 /* CART PAGE */
 #page-cart{padding-top:0;}
@@ -118,17 +140,14 @@ h2 em{font-style:italic;color:var(--blush);}
 .clear-cart-btn{background:none;border:none;color:rgba(232,180,160,.35);font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:color .2s;}
 .clear-cart-btn:hover{color:var(--mag);}
 .cart-empty-msg{text-align:center;padding:70px 0;color:rgba(232,180,160,.35);font-size:11px;letter-spacing:3px;text-transform:uppercase;}
-/* cart item row */
 .citem{display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid rgba(232,180,200,.07);}
 .citem-swatch{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.15);flex-shrink:0;}
-.citem-info{}
 .citem-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--cream);line-height:1.2;}
 .citem-sub{font-size:9px;letter-spacing:2px;color:rgba(232,180,160,.5);text-transform:uppercase;margin-top:3px;}
 .citem-right{text-align:right;}
 .citem-price{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--blush);display:block;margin-bottom:8px;}
 .citem-remove{background:none;border:none;color:rgba(232,180,160,.3);cursor:pointer;font-size:13px;letter-spacing:1px;transition:color .2s;font-family:'Josefin Sans',sans-serif;}
 .citem-remove:hover{color:var(--mag);}
-/* cart totals */
 .cart-totals{margin-top:32px;padding-top:24px;border-top:1px solid rgba(232,180,200,.1);text-align:right;}
 .cart-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;}
 .cart-total-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(232,180,160,.55);}
@@ -142,13 +161,11 @@ h2 em{font-style:italic;color:var(--blush);}
 .checkout-wrap{max-width:700px;margin:0 auto;padding:52px 48px 90px;}
 .checkout-title{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--cream);margin-bottom:8px;}
 .step-lbl{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--rg);margin-bottom:28px;display:block;}
-/* order summary box */
 .osummary{background:rgba(59,10,69,.22);border:1px solid rgba(232,180,200,.09);padding:18px 20px;margin-bottom:28px;}
 .osummary-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,180,160,.45);margin-bottom:12px;}
 .oline{display:flex;justify-content:space-between;font-size:11px;color:rgba(232,180,160,.65);padding:4px 0;letter-spacing:.3px;}
 .oline.ototal{border-top:1px solid rgba(232,180,200,.1);margin-top:8px;padding-top:10px;color:var(--cream);}
 .oline.ototal span:last-child{font-family:'Cormorant Garamond',serif;font-size:18px;}
-/* form */
 .field{margin-bottom:18px;}
 .field label{display:block;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,180,160,.55);margin-bottom:7px;}
 .field input,.field textarea{width:100%;background:rgba(59,10,69,.28);border:1px solid rgba(232,180,200,.17);color:var(--tl);padding:12px 14px;font-family:'Josefin Sans',sans-serif;font-size:12px;letter-spacing:.4px;outline:none;transition:border-color .3s;resize:none;}
@@ -156,7 +173,6 @@ h2 em{font-style:italic;color:var(--blush);}
 .field input::placeholder,.field textarea::placeholder{color:rgba(232,180,160,.25);}
 .proceed-btn{width:100%;padding:16px;background:var(--mag);border:none;color:#fff;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:background .3s;margin-top:6px;}
 .proceed-btn:hover{background:var(--berry);}
-
 .netlify-hidden-form{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
 .hidden-bot-field{position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0;}
 .form-status{font-size:10px;letter-spacing:1px;color:rgba(232,180,160,.65);line-height:1.8;margin-top:14px;min-height:18px;}
@@ -234,16 +250,15 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 @media(max-width:768px){
   nav{padding:16px 18px;}
   .nav-links{display:none;}
-  #featured,.bsec,footer{padding-left:18px;padding-right:18px;}
+  #featured,.bsec,footer,.how-to-use,.perfume-teaser{padding-left:18px;padding-right:18px;}
   .pgrid,.cart-page-wrap,.checkout-wrap,.payment-wrap,.success-wrap{padding-left:18px;padding-right:18px;}
   .asec{grid-template-columns:1fr;gap:40px;padding:52px 18px 80px;}
   .avis{height:240px;}
-  .abig{font-size:42px;}
-}
+  .abig{font-size:42px;}}
 </style>
 </head>
 <body>
-<!-- NAV -->
+
 <nav>
 <span class="nav-logo" onclick="showPage('home')">TIFFS</span>
 <ul class="nav-links">
@@ -252,19 +267,17 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <li><a onclick="showPage('bundles')">Bundles</a></li>
 <li><a onclick="showPage('about')">About</a></li>
 </ul>
-<button class="cart-btn" onclick="showPage('cart')">
-    ♡ Cart <span class="cart-count" id="cart-count">0</span>
-</button>
+<button class="cart-btn" onclick="showPage('cart')">♡ Cart <span class="cart-count" id="cart-count">0</span></button>
 </nav>
-<!-- ══════ HOME ══════ -->
+
 <div class="page active" id="page-home">
 <section id="hero">
 <div class="blossom b1"></div><div class="blossom b2"></div><div class="blossom b3"></div>
 <div id="sparkles-wrap"></div>
 <div class="hero-content">
-<p class="eyebrow">Est. 2025  ·  Lagos, Nigeria</p>
+<p class="eyebrow">Est. 2025 · Lagos, Nigeria</p>
 <h1>TIFFS<br/><em>Lip Care</em></h1>
-<p class="hero-tag">Made for our skin  ·  High shine  ·  Long lasting  ·  Non-sticky</p>
+<p class="hero-tag">Made for our skin · High shine · Long lasting · Non-sticky</p>
 <div class="hero-cta">
 <button class="btn-p" onclick="showPage('products')">Shop Now</button>
 <button class="btn-g" onclick="showPage('about')">Our Story</button>
@@ -272,9 +285,11 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 </div>
 <div class="scroll-hint">Scroll ↓</div>
 </section>
+
 <div class="ticker"><div class="ticker-inner">
 <span class="ti">High Shine<span class="td">✦</span></span><span class="ti">Non-Sticky<span class="td">✦</span></span><span class="ti">Long Lasting<span class="td">✦</span></span><span class="ti">Made For Our Skin<span class="td">✦</span></span><span class="ti">Handmade<span class="td">✦</span></span><span class="ti">Thoughtfully Formulated<span class="td">✦</span></span><span class="ti">High Shine<span class="td">✦</span></span><span class="ti">Non-Sticky<span class="td">✦</span></span><span class="ti">Long Lasting<span class="td">✦</span></span><span class="ti">Made For Our Skin<span class="td">✦</span></span><span class="ti">Handmade<span class="td">✦</span></span><span class="ti">Thoughtfully Formulated<span class="td">✦</span></span>
 </div></div>
+
 <section id="featured">
 <span class="slabel">The Collection</span>
 <h2>Glosses That <em>Actually</em><br/>Show Up For You</h2>
@@ -287,6 +302,17 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 </div>
 <div style="margin-top:46px;"><button class="btn-p" onclick="showPage('products')">View Full Collection</button></div>
 </section>
+
+<section class="perfume-teaser">
+<div class="perfume-inner">
+<span class="coming-pill">Something New Is Coming</span>
+<h2 class="perfume-title">TIFFS <em>Perfume Oil</em></h2>
+<p class="perfume-copy">Your lip routine is about to meet its signature scent. TIFFS Perfume Oil is coming soon — created to add a soft, memorable finishing touch to your everyday TIFFS experience.</p>
+<p class="perfume-size">10ml Spray · Coming Soon</p>
+<div style="margin-top:30px;"><button class="btn-g" onclick="showPage('products')">Discover What's Coming</button></div>
+</div>
+</section>
+
 <footer>
 <p class="flogo">TIFFS</p><p class="ftag">Lip Care Made For Our Skin</p>
 <div class="fsoc"><a href="https://instagram.com/glossbytiffs" target="_blank">☉ @glossbytiffs</a><a href="https://wa.me/2349020969644" target="_blank">✉ WhatsApp</a></div>
@@ -294,18 +320,21 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <p class="fbottom">© 2025 TIFFS — All rights reserved · Lagos, Nigeria</p>
 </footer>
 </div>
-<!-- ══════ PRODUCTS ══════ -->
+
 <div class="page" id="page-products">
 <div class="prod-top">
 <span class="slabel">The Full Collection</span>
 <h2>Every Product.<br/><em>Thoughtfully Made.</em></h2>
 </div>
+
 <div class="tabs">
 <button class="tab active" onclick="filterP('all',this)">All</button>
 <button class="tab" onclick="filterP('gloss',this)">Glosses</button>
 <button class="tab" onclick="filterP('balm',this)">Balm</button>
 <button class="tab" onclick="filterP('care',this)">Lip Care</button>
+<button class="tab" onclick="filterP('perfume',this)">Perfume</button>
 </div>
+
 <div class="pgrid">
 <div class="pcard show" data-cat="gloss" data-name="Coco Haze" data-price="3000" data-swatch="#8B5E3C">
 <div class="product-photo" data-label="Coco Haze Lip Gloss photo"><img alt="Coco Haze Lip Gloss" class="product-img" data-img-base="coco-haze.jpg|coco-haze|coco-haze.jpg.jpg" src="coco-haze.jpg"/></div>
@@ -315,6 +344,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
 <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
 </div>
+
 <div class="pcard show" data-cat="gloss" data-name="Terracotta Rose" data-price="3000" data-swatch="#C27A5C">
 <div class="product-photo" data-label="Terracotta Rose Lip Gloss photo"><img alt="Terracotta Rose Lip Gloss" class="product-img" data-img-base="terracotta-rose|terracotta-rose.jpg|terracotta-rose.jpg.jpg" src="terracotta-rose"/></div>
 <span class="pbadge">Lip Gloss</span><p class="pname">Terracotta Rose</p>
@@ -323,6 +353,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
 <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
 </div>
+
 <div class="pcard show" data-cat="gloss" data-name="Sway" data-price="3000" data-swatch="#C4967A">
 <div class="product-photo" data-label="Sway Lip Gloss photo"><img alt="Sway Lip Gloss" class="product-img" data-img-base="sway|sway.jpg|sway.jpg.jpg" src="sway"/></div>
 <span class="pbadge">Lip Gloss</span><p class="pname">Sway</p>
@@ -331,6 +362,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
 <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
 </div>
+
 <div class="pcard show" data-cat="gloss" data-name="Serendipity" data-price="3000" data-swatch="#B5206E">
 <div class="product-photo" data-label="Serendipity Lip Gloss photo"><img alt="Serendipity Lip Gloss" class="product-img" data-img-base="lip-glo|lip-glo.jpg|serendipity|serendipity.jpg|serendipity.jpg.jpg" src="lip-glo"/></div>
 <span class="pbadge">Lip Gloss</span><p class="pname">Serendipity</p>
@@ -339,6 +371,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
 <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
 </div>
+
 <div class="pcard show" data-cat="gloss" data-name="Crystal Clear" data-price="3000" data-swatch="rgba(200,200,220,0.5)">
 <div class="product-photo" data-label="Crystal Clear Lip Gloss photo"><img alt="Crystal Clear Lip Gloss" class="product-img" data-img-base="clear-gloss.jpg|clear-gloss|clear-gloss.jpg.jpg|crystal-clear|crystal-clear.jpg" src="clear-gloss.jpg"/></div>
 <span class="pbadge">Lip Gloss</span><p class="pname">Crystal Clear</p>
@@ -347,7 +380,6 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
 <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
 </div>
-
 
 <div class="pcard show" data-cat="balm" data-name="Classic Lip Balm" data-price="2500" data-swatch="#F5F5F0">
 <div class="product-photo" data-label="Classic Lip Balm photo"><img alt="Classic Lip Balm" class="product-img" data-img-base="lip-balm.jpg|lip-balm|lip-balm.jpg.jpg" src="lip-balm.jpg"/></div>
@@ -367,6 +399,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
 <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
 </div>
+
 <div class="pcard show" data-cat="care" data-name="Lip Brush" data-price="600" data-swatch="#C9956C">
 <div class="product-photo" data-label="Lip Brush photo"><img alt="Lip Brush" class="product-img" data-img-base="lip-scrub|lip-scrub.jpg|lip-brush|lip-brush.jpg|lip-care-set.jpg|lip-care-set" src="lip-scrub"/></div>
 <span class="pbadge">Applicator</span><p class="pname">Lip Brush</p>
@@ -375,10 +408,49 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div class="qty-row"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
 <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
 </div>
+
+<div class="pcard show" data-cat="perfume" data-name="TIFFS Signature Perfume Oil" data-price="0" data-swatch="#B5206E">
+<div class="perfume-placeholder"><span class="perfume-bottle">T</span><span>Product Image Coming Soon</span></div>
+<span class="pbadge">Coming Soon · Perfume Oil</span>
+<p class="pname">TIFFS Signature Perfume Oil</p>
+<p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rg);margin-bottom:12px;">10ml Spray</p>
+<p class="pdesc">A signature fragrance experience designed to complement your TIFFS lip routine. Soft, memorable and made for layering into your everyday beauty ritual.</p>
+<div style="padding:16px 0;margin-bottom:18px;border-top:1px solid rgba(232,180,200,.08);border-bottom:1px solid rgba(232,180,200,.08);">
+<p style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--rg);margin-bottom:8px;">How To Use</p>
+<p style="font-size:10px;line-height:1.9;color:rgba(232,180,160,.58);">Spray onto pulse points such as the wrists, neck and behind the ears. Layer with your favourite TIFFS lip gloss for a signature scent experience.</p>
 </div>
+<div class="pfoot"><span class="pprice">Price TBA</span></div>
+<button class="coming-btn" disabled>Coming Soon</button>
+</div>
+</div>
+
+<section class="how-to-use">
+<span class="slabel">Your TIFFS Routine</span>
+<h2>How To <em>Use</em></h2>
+<p class="how-intro">Get the best from every TIFFS product with a few simple steps designed to keep your lips smooth, hydrated and beautifully finished.</p>
+
+<div class="how-grid">
+<div class="how-card"><span class="how-number">01</span><p class="how-name">Lip Gloss</p><p class="how-copy">Apply directly to lips using the wand. Layer over lip balm for extra hydration or wear alone for high-shine colour.</p></div>
+<div class="how-card"><span class="how-number">02</span><p class="how-name">Lip Balm — Glide Stick</p><p class="how-copy">Twist up and apply to lips whenever they feel dry. Can be worn alone or under lip gloss.</p></div>
+<div class="how-card"><span class="how-number">03</span><p class="how-name">Lip Scrub</p><p class="how-copy">Apply to dry lips. Gently massage in circular motions for 20 seconds. Rinse or wipe off. Use 1–2 times a week.</p></div>
+<div class="how-card"><span class="how-number">04</span><p class="how-name">Lip Mask</p><p class="how-copy">Apply a generous layer to clean lips. Leave on for 10–15 minutes or overnight. Wipe off any excess.</p></div>
+<div class="how-card"><span class="how-number">05</span><p class="how-name">Lip Brush</p><p class="how-copy">Dip into gloss or balm and apply evenly to lips for a more precise finish.</p></div>
+<div class="how-card"><span class="how-number">06</span><p class="how-name">TIFFS Perfume Oil</p><p class="how-copy">Spray onto pulse points — wrists, neck and behind the ears. Layer with matching lip gloss for a signature scent experience.</p></div>
+</div>
+</section>
+
+<section class="perfume-teaser">
+<div class="perfume-inner">
+<span class="coming-pill">Coming To TIFFS</span>
+<h2 class="perfume-title">Lips Meet <em>Fragrance.</em></h2>
+<p class="perfume-copy">Introducing the next chapter of TIFFS: our Signature Perfume Oil in a convenient 10ml spray. Made to become the finishing touch to your beauty routine.</p>
+<p class="perfume-size">TIFFS Signature Perfume Oil · 10ml</p>
+</div>
+</section>
+
 <div id="toast-wrap"><div id="toast"></div></div>
 </div>
-<!-- ══════ CART ══════ -->
+
 <div class="page" id="page-cart">
 <div class="cart-page-wrap">
 <div class="cart-page-header">
@@ -387,15 +459,12 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 </div>
 <div id="cart-body"></div>
 <div class="cart-totals" id="cart-totals-section" style="display:none;">
-<div class="cart-total-row">
-<span class="cart-total-label">Total</span>
-<span class="cart-total-amt" id="cart-total-amt">₦0</span>
-</div>
+<div class="cart-total-row"><span class="cart-total-label">Total</span><span class="cart-total-amt" id="cart-total-amt">₦0</span></div>
 <button class="checkout-btn" onclick="showPage('checkout')">Proceed to Checkout</button>
 </div>
 </div>
 </div>
-<!-- ══════ CHECKOUT ══════ -->
+
 <div class="page" id="page-checkout">
 <div class="checkout-wrap">
 <p class="checkout-title">Complete Order</p>
@@ -409,7 +478,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div style="margin-top:12px;text-align:center;"><button class="back-link" onclick="showPage('cart')">← Back to Cart</button></div>
 </div>
 </div>
-<!-- ══════ PAYMENT ══════ -->
+
 <div class="page" id="page-payment">
 <div class="payment-wrap">
 <span class="slabel" style="display:block;margin-bottom:8px;">Step 2 of 2 — Bank Transfer</span>
@@ -431,7 +500,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <button class="back-link" onclick="showPage('checkout')">← Back to Details</button>
 </div>
 </div>
-<!-- ══════ SUCCESS ══════ -->
+
 <div class="page" id="page-success">
 <div class="success-wrap">
 <div class="success-icon">💌</div>
@@ -441,7 +510,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <button class="cont-btn" onclick="startOver()">Continue Shopping</button>
 </div>
 </div>
-<!-- ══════ BUNDLES ══════ -->
+
 <div class="page" id="page-bundles">
 <div class="bsec">
 <span class="slabel">Save More</span>
@@ -450,21 +519,16 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div class="bgrid">
 <div class="bcard" data-name="Starter Kit (1 Gloss + 1 Lip Balm)" data-price="5500">
 <div class="product-photo" data-label="Starter Kit photo"><img alt="Starter Kit" class="product-img" data-img-base="lip-care-set.jpg|lip-care-set|lip-balm.jpg|lip-balm|sway.jpg|sway" src="lip-care-set.jpg"/></div>
-<span class="btag">Popular</span>
-<span class="bicon">💋</span>
-<p class="bname">Starter Kit</p>
-<p class="bincludes">1 Lip Gloss of your choice<br/>+ 1 Classic Lip Balm</p>
-<span class="bprice">₦5,500</span>
+<span class="btag">Popular</span><span class="bicon">💋</span><p class="bname">Starter Kit</p>
+<p class="bincludes">1 Lip Gloss of your choice<br/>+ 1 Classic Lip Balm</p><span class="bprice">₦5,500</span>
 <div class="qty-row" style="justify-content:center;"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
 <button class="add-btn" onclick="addBundleToCart(this)" style="margin-top:12px;">Add to Cart</button>
 </div>
+
 <div class="bcard" data-name="Full Lip Care Set (3 Glosses + Lip Balm + Mask + Brush)" data-price="12600">
 <div class="product-photo" data-label="Full Lip Care Set photo"><img alt="Full Lip Care Set" class="product-img" data-img-base="lip-care-set.jpg|lip-care-set|full-lip-care-set.jpg|full-lip-care-set" src="lip-care-set.jpg"/></div>
-<span class="btag">Best Value</span>
-<span class="bicon">✨</span>
-<p class="bname">Full Lip Care Set</p>
-<p class="bincludes">3 Glosses of your choice<br/>+ Classic Lip Balm<br/>+ Lip Mask + Lip Brush</p>
-<span class="bprice">₦12,600</span>
+<span class="btag">Best Value</span><span class="bicon">✨</span><p class="bname">Full Lip Care Set</p>
+<p class="bincludes">3 Glosses of your choice<br/>+ Classic Lip Balm<br/>+ Lip Mask + Lip Brush</p><span class="bprice">₦12,600</span>
 <div class="qty-row" style="justify-content:center;"><button class="qty-btn" onclick="chQty(this,-1)">−</button><span class="qty-val">1</span><button class="qty-btn" onclick="chQty(this,1)">+</button></div>
 <button class="add-btn" onclick="addBundleToCart(this)" style="margin-top:12px;">Add to Cart</button>
 </div>
@@ -472,7 +536,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div id="toast-wrap-b"><div id="toast-b" style="display:inline-block;background:var(--mag);color:#fff;padding:11px 24px;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0;transition:opacity .4s;pointer-events:none;margin-top:20px;"></div></div>
 </div>
 </div>
-<!-- ══════ ABOUT ══════ -->
+
 <div class="page" id="page-about">
 <div class="asec">
 <div class="avis">
@@ -488,29 +552,32 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div class="amission"><p>"For You. By TIFFS."</p></div>
 </div>
 </div>
+
+<section class="perfume-teaser">
+<div class="perfume-inner">
+<span class="coming-pill">The TIFFS World Is Growing</span>
+<h2 class="perfume-title">Beyond Lips.<br/><em>A Signature Scent.</em></h2>
+<p class="perfume-copy">TIFFS began with lip care made for our skin. Now we're expanding the experience with TIFFS Signature Perfume Oil — a 10ml fragrance spray designed to pair beautifully with your favourite TIFFS gloss.</p>
+<p class="perfume-size">Coming Soon</p>
+</div>
+</section>
+
 <div class="ticker"><div class="ticker-inner">
 <span class="ti">Handmade<span class="td">✦</span></span><span class="ti">For Our Skin<span class="td">✦</span></span><span class="ti">Honest Formulas<span class="td">✦</span></span><span class="ti">Est. 2025<span class="td">✦</span></span><span class="ti">Lagos, Nigeria<span class="td">✦</span></span><span class="ti">Handmade<span class="td">✦</span></span><span class="ti">For Our Skin<span class="td">✦</span></span><span class="ti">Honest Formulas<span class="td">✦</span></span><span class="ti">Est. 2025<span class="td">✦</span></span><span class="ti">Lagos, Nigeria<span class="td">✦</span></span>
 </div></div>
 </div>
-<!-- Real Netlify order form. Netlify detects this static form at deploy time. -->
+
 <form class="netlify-hidden-form" data-netlify="true" method="POST" name="tiffs-order" netlify-honeypot="bot-field">
 <input name="form-name" type="hidden" value="tiffs-order"/>
 <p class="hidden-bot-field"><label>Leave this field empty: <input name="bot-field"/></label></p>
 <input data-remove-prefix="" name="subject" type="hidden" value="New TIFFS Order"/>
-<input name="name" type="hidden"/>
-<input name="phone" type="hidden"/>
-<input name="address" type="hidden"/>
-<input name="note" type="hidden"/>
-<input name="order_items" type="hidden"/>
-<input name="total" type="hidden"/>
-<input name="payment_status" type="hidden"/>
-<input name="payment_bank" type="hidden"/>
-<input name="payment_account_number" type="hidden"/>
-<input name="payment_account_name" type="hidden"/>
+<input name="name" type="hidden"/><input name="phone" type="hidden"/><input name="address" type="hidden"/><input name="note" type="hidden"/>
+<input name="order_items" type="hidden"/><input name="total" type="hidden"/><input name="payment_status" type="hidden"/>
+<input name="payment_bank" type="hidden"/><input name="payment_account_number" type="hidden"/><input name="payment_account_name" type="hidden"/>
 <input name="submitted_at" type="hidden"/>
 </form>
+
 <script>
-// ── sparkles
 (function(){
   var w=document.getElementById('sparkles-wrap');
   if(!w){return;}
@@ -523,8 +590,6 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
   }
 })();
 
-
-// ── PRODUCT IMAGES
 function initProductImages(){
   var imgs=document.querySelectorAll('img.product-img[data-img-base]');
   var exts=['jpg','jpeg','png','webp','JPG','JPEG','PNG','WEBP'];
@@ -540,8 +605,6 @@ function initProductImages(){
       addChoice(base);
       exts.forEach(function(ext){
         addChoice(base+'.'+ext);
-        // This fixes the common Windows issue where a file looks like coco-haze.jpg
-        // but the real hidden filename becomes coco-haze.jpg.jpg.
         addChoice(base+'.jpg.'+ext);
       });
     });
@@ -561,7 +624,6 @@ function initProductImages(){
 }
 initProductImages();
 
-// ── CART
 var cart=[];
 var orderInfo={};
 
@@ -578,88 +640,38 @@ function renderCartPage(){
   var body=document.getElementById('cart-body');
   var tots=document.getElementById('cart-totals-section');
   var totalAmt=document.getElementById('cart-total-amt');
-
-  // This prevents the "Cannot read properties of null (reading 'style')" error
-  // if the cart section has not loaded yet.
   if(!body || !tots){return;}
-
   if(cart.length===0){
     body.innerHTML='<div class="cart-empty-msg">Your cart is empty</div>';
     tots.style.display='none';
     return;
   }
-
   tots.style.display='block';
   if(totalAmt){totalAmt.textContent=fmt(total());}
-
   body.innerHTML='';
-
   cart.forEach(function(item,i){
-    var row=document.createElement('div');
-    row.className='citem';
-
-    var sw=document.createElement('div');
-    sw.className='citem-swatch';
-    sw.style.background=item.swatch || '#5C1A6E';
-
-    var info=document.createElement('div');
-    info.className='citem-info';
-
-    var name=document.createElement('p');
-    name.className='citem-name';
-    name.textContent=item.name;
-
-    info.appendChild(name);
-
+    var row=document.createElement('div');row.className='citem';
+    var sw=document.createElement('div');sw.className='citem-swatch';sw.style.background=item.swatch || '#5C1A6E';
+    var info=document.createElement('div');info.className='citem-info';
+    var name=document.createElement('p');name.className='citem-name';name.textContent=item.name;info.appendChild(name);
     if(item.flavour){
-      var subFlavour=document.createElement('p');
-      subFlavour.className='citem-sub';
-      subFlavour.textContent=item.flavour;
-      info.appendChild(subFlavour);
+      var subFlavour=document.createElement('p');subFlavour.className='citem-sub';subFlavour.textContent=item.flavour;info.appendChild(subFlavour);
     }
-
-    var qty=document.createElement('p');
-    qty.className='citem-sub';
-    qty.textContent='Qty: '+item.qty;
-    info.appendChild(qty);
-
-    var right=document.createElement('div');
-    right.className='citem-right';
-
-    var price=document.createElement('span');
-    price.className='citem-price';
-    price.textContent=fmt(item.price*item.qty);
-
-    var remove=document.createElement('button');
-    remove.className='citem-remove';
-    remove.type='button';
-    remove.textContent='Remove';
-    remove.onclick=function(){removeItem(i);};
-
-    right.appendChild(price);
-    right.appendChild(remove);
-
-    row.appendChild(sw);
-    row.appendChild(info);
-    row.appendChild(right);
-    body.appendChild(row);
+    var qty=document.createElement('p');qty.className='citem-sub';qty.textContent='Qty: '+item.qty;info.appendChild(qty);
+    var right=document.createElement('div');right.className='citem-right';
+    var price=document.createElement('span');price.className='citem-price';price.textContent=fmt(item.price*item.qty);
+    var remove=document.createElement('button');remove.className='citem-remove';remove.type='button';remove.textContent='Remove';remove.onclick=function(){removeItem(i);};
+    right.appendChild(price);right.appendChild(remove);
+    row.appendChild(sw);row.appendChild(info);row.appendChild(right);body.appendChild(row);
   });
 }
 
-function removeItem(idx){
-  cart.splice(idx,1);
-  updateNav();
-  renderCartPage();
-}
-
-function clearCart(){
-  cart=[];
-  updateNav();
-  renderCartPage();
-}
+function removeItem(idx){cart.splice(idx,1);updateNav();renderCartPage();}
+function clearCart(){cart=[];updateNav();renderCartPage();}
 
 function addToCart(btn){
   var card=btn.closest('.pcard');
+  if(card.dataset.cat==='perfume'){return;}
   var name=card.dataset.name;
   var price=parseInt(card.dataset.price);
   var swatch=card.dataset.swatch;
@@ -699,20 +711,17 @@ function chQty(btn,d){
   v.textContent=Math.max(1,parseInt(v.textContent)+d);
 }
 
-// ── CHECKOUT FLOW
 function buildCheckoutSummary(){
   var summary=document.getElementById('checkout-summary');
   if(!summary){return;}
-
   if(cart.length===0){
     summary.innerHTML='<p class="osummary-title">Your Order</p><div class="oline"><span>Your cart is empty</span><span>'+fmt(0)+'</span></div>';
     return;
   }
-
   var html='<p class="osummary-title">Your Order</p>';
   for(var i=0;i<cart.length;i++){
     var it=cart[i];
-    html+='<div class="oline"><span>'+it.name+(it.flavour?' ('+it.flavour+')':'')+'  ×'+it.qty+'</span><span>'+fmt(it.price*it.qty)+'</span></div>';
+    html+='<div class="oline"><span>'+it.name+(it.flavour?' ('+it.flavour+')':'')+' ×'+it.qty+'</span><span>'+fmt(it.price*it.qty)+'</span></div>';
   }
   html+='<div class="oline ototal"><span>Total</span><span>'+fmt(total())+'</span></div>';
   summary.innerHTML=html;
@@ -720,17 +729,13 @@ function buildCheckoutSummary(){
 
 function goToPayment(){
   if(cart.length===0){alert('Your cart is empty. Please add at least one product.');showPage('products');return;}
-
   var name=document.getElementById('f-name').value.trim();
   var phone=document.getElementById('f-phone').value.trim();
   var addr=document.getElementById('f-address').value.trim();
   if(!name||!phone||!addr){alert('Please fill in your name, phone number and delivery address.');return;}
-
   orderInfo={name:name,phone:phone,address:addr,note:document.getElementById('f-note').value.trim()};
-
   var payAmt=document.getElementById('pay-display-amt');
   if(payAmt){payAmt.textContent=fmt(total());}
-
   showPage('payment');
 }
 
@@ -752,7 +757,7 @@ function buildWhatsAppMessage(){
   msg+='\n*ORDER*\n';
   for(var i=0;i<cart.length;i++){
     var it=cart[i];
-    msg+='• '+it.name+(it.flavour?' ('+it.flavour+')':'')+'  ×'+it.qty+'  =  '+fmt(it.price*it.qty)+'\n';
+    msg+='• '+it.name+(it.flavour?' ('+it.flavour+')':'')+' ×'+it.qty+' = '+fmt(it.price*it.qty)+'\n';
   }
   msg+='\n*TOTAL: '+fmt(total())+'*';
   msg+='\n\n✅ Payment of '+fmt(total())+' sent to ACCESS BANK 1828128839 — BOLUWATIFE KANYINSOLA AKINJEJI';
@@ -760,9 +765,7 @@ function buildWhatsAppMessage(){
 }
 
 function encodeNetlifyData(data){
-  return Object.keys(data).map(function(key){
-    return encodeURIComponent(key)+'='+encodeURIComponent(data[key]);
-  }).join('&');
+  return Object.keys(data).map(function(key){return encodeURIComponent(key)+'='+encodeURIComponent(data[key]);}).join('&');
 }
 
 function submitNetlifyOrder(){
@@ -780,7 +783,6 @@ function submitNetlifyOrder(){
     'payment_account_name':'BOLUWATIFE KANYINSOLA AKINJEJI',
     'submitted_at':new Date().toLocaleString()
   };
-
   return fetch('/netlify-form.html', {
     method:'POST',
     headers:{'Content-Type':'application/x-www-form-urlencoded'},
@@ -794,24 +796,12 @@ function submitNetlifyOrder(){
 async function confirmPayment(){
   var status=document.getElementById('order-submit-status');
   var payBtn=document.querySelector('.paid-btn');
-
-  if(cart.length===0){
-    alert('Your cart is empty. Please add at least one product.');
-    showPage('products');
-    return;
-  }
-
-  if(!orderInfo.name || !orderInfo.phone || !orderInfo.address){
-    alert('Please complete your details first.');
-    showPage('checkout');
-    return;
-  }
-
+  if(cart.length===0){alert('Your cart is empty. Please add at least one product.');showPage('products');return;}
+  if(!orderInfo.name || !orderInfo.phone || !orderInfo.address){alert('Please complete your details first.');showPage('checkout');return;}
   var msg=buildWhatsAppMessage();
   var url='https://wa.me/2349020969644?text='+encodeURIComponent(msg);
   var waBtn=document.getElementById('wa-final-btn');
   if(waBtn){waBtn.href=url;}
-
   if(window.location.protocol==='file:'){
     if(status){
       status.textContent='This real order form will submit only after you deploy on Netlify. Upload the site, then test it using the live Netlify link.';
@@ -820,23 +810,11 @@ async function confirmPayment(){
     alert('This real order form works after deployment on Netlify. Please upload the site to Netlify, then test the live link.');
     return;
   }
-
   try{
-    if(status){
-      status.textContent='Sending your order... please wait.';
-      status.className='form-status';
-    }
-    if(payBtn){
-      payBtn.disabled=true;
-      payBtn.textContent='Sending Order...';
-    }
-
+    if(status){status.textContent='Sending your order... please wait.';status.className='form-status';}
+    if(payBtn){payBtn.disabled=true;payBtn.textContent='Sending Order...';}
     await submitNetlifyOrder();
-
-    if(status){
-      status.textContent='Order sent successfully.';
-      status.className='form-status success';
-    }
+    if(status){status.textContent='Order sent successfully.';status.className='form-status success';}
     showPage('success');
   }catch(err){
     console.error(err);
@@ -846,10 +824,7 @@ async function confirmPayment(){
     }
     alert('Order could not be sent yet. Netlify has not detected the order form. Upload netlify-form.html with index.html, redeploy, then try again.');
   }finally{
-    if(payBtn){
-      payBtn.disabled=false;
-      payBtn.textContent="I've Made Payment ✓";
-    }
+    if(payBtn){payBtn.disabled=false;payBtn.textContent="I've Made Payment ✓";}
   }
 }
 
@@ -862,45 +837,33 @@ function startOver(){
   showPage('home');
 }
 
-// ── PAGE ROUTING
 function showPage(name){
   var page=document.getElementById('page-'+name);
   if(!page){return;}
-
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   page.classList.add('active');
-
   window.scrollTo({top:0,behavior:'smooth'});
-
   if(name==='cart'){renderCartPage();}
   if(name==='checkout'){buildCheckoutSummary();}
 }
 
-// ── FILTER
 function filterP(cat,btn){
   document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active');});
   if(btn){btn.classList.add('active');}
-
   document.querySelectorAll('.pcard').forEach(function(c){
     c.classList.toggle('show',cat==='all'||c.dataset.cat===cat);
   });
 }
 
-// ── TOAST
 var toastTimers={};
 function showToast(msg,id){
   var t=document.getElementById(id);
   if(!t){return;}
-
   t.textContent=msg;
   t.style.opacity='1';
   t.classList.add('show');
-
   clearTimeout(toastTimers[id]);
-  toastTimers[id]=setTimeout(function(){
-    t.style.opacity='0';
-    t.classList.remove('show');
-  },2000);
+  toastTimers[id]=setTimeout(function(){t.style.opacity='0';t.classList.remove('show');},2000);
 }
 </script>
 </body>
