@@ -247,6 +247,79 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 #toast.show{opacity:1;}
 #toast-wrap{text-align:center;height:0;overflow:visible;}
 
+/* ADVENT CALENDAR */
+:root{--gold:#E2B979;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.adv-mini{display:none;background:none;border:1px solid rgba(226,185,121,.45);color:var(--gold);padding:10px 12px;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;}
+.nav-links a.adv-link{color:var(--gold);}
+.adv-teaser{position:relative;overflow:hidden;padding:90px 48px;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(226,185,121,.16),transparent 55%),linear-gradient(180deg,#14021e,var(--deep));border-bottom:1px solid rgba(226,185,121,.12);}
+.adv-teaser .slabel,.adv-hero .slabel{color:var(--gold);}
+.adv-today{position:relative;z-index:1;max-width:560px;margin:34px auto 0;padding:34px 30px;border:1px solid rgba(226,185,121,.3);background:linear-gradient(140deg,rgba(92,26,110,.25),rgba(30,3,40,.6));}
+.adv-today-day{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.adv-today-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,36px);font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:22px;}
+.prog-wrap{max-width:420px;margin:30px auto 0;}
+.prog-bar{height:6px;background:rgba(232,180,200,.12);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;width:0;background:linear-gradient(90deg,var(--mag),var(--gold));transition:width 1s ease;}
+.prog-lbl{margin-top:10px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,180,160,.55);}
+.prog-lbl strong{color:var(--cream);font-weight:400;}
+.snow{position:absolute;top:-10px;color:rgba(253,246,238,.35);pointer-events:none;animation:snowfall linear infinite;font-size:10px;}
+@keyframes snowfall{to{transform:translateY(110vh) rotate(180deg);}}
+
+#page-advent{padding-top:0;}
+.adv-hero{position:relative;overflow:hidden;padding:60px 48px 100px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(226,185,121,.14),transparent 50%),var(--deep);}
+.adv-status{margin-top:18px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,180,160,.6);}
+.adv-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;max-width:760px;margin:44px auto 0;}
+.door{aspect-ratio:1;position:relative;border:none;background:none;padding:0;cursor:pointer;font-family:inherit;}
+.door-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(232,180,200,.14);background:linear-gradient(140deg,rgba(92,26,110,.4),rgba(30,3,40,.75));transition:transform .35s,border-color .3s,background .3s;}
+.door-face::before,.door-face::after{content:'✦';position:absolute;font-size:8px;color:rgba(226,185,121,.35);}
+.door-face::before{top:7px;left:9px;}.door-face::after{bottom:7px;right:9px;}
+.door:hover .door-face{transform:translateY(-3px);border-color:rgba(226,185,121,.45);}
+.door-num{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,5vw,44px);font-weight:300;color:var(--cream);line-height:1;}
+.door-sub{margin-top:6px;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(232,180,160,.45);}
+.door.locked .door-num{color:rgba(253,246,238,.55);}
+.door.past .door-face{background:rgba(30,3,40,.35);border-style:dashed;}
+.door.past .door-num{color:rgba(232,180,160,.3);}
+.door.today .door-face{border-color:var(--gold);background:linear-gradient(140deg,var(--mag),var(--mid));animation:doorglow 2.4s ease-in-out infinite;}
+.door.today .door-sub{color:#fff;}
+.door.xmas .door-face{background:linear-gradient(140deg,var(--berry),#2a0638);border-color:rgba(226,185,121,.5);}
+.door.xmas.today .door-face{background:linear-gradient(140deg,var(--gold),var(--mag));}
+@keyframes doorglow{0%,100%{box-shadow:0 0 0 1px rgba(226,185,121,.6),0 0 18px rgba(226,185,121,.25);}50%{box-shadow:0 0 0 1px rgba(226,185,121,1),0 0 36px rgba(226,185,121,.5);}}
+.adv-legend{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:28px;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,180,160,.45);}
+.adv-legend i{display:inline-block;width:10px;height:10px;margin-right:7px;vertical-align:-1px;border:1px solid rgba(232,180,200,.3);}
+.adv-fine{max-width:520px;margin:34px auto 0;font-size:10px;line-height:2;color:rgba(232,180,160,.4);letter-spacing:.4px;}
+
+.adv-modal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(10,0,16,.82);backdrop-filter:blur(6px);}
+.adv-modal.open{display:flex;}
+.adv-card{position:relative;width:100%;max-width:480px;max-height:90vh;overflow:auto;padding:46px 36px 36px;text-align:center;background:linear-gradient(150deg,#2a0638,#14021e);border:1px solid rgba(226,185,121,.35);animation:advpop .45s ease;}
+@keyframes advpop{from{opacity:0;transform:scale(.88) translateY(20px);}to{opacity:1;transform:none;}}
+.adv-close{position:absolute;top:10px;right:14px;background:none;border:none;color:rgba(232,180,160,.5);font-size:24px;cursor:pointer;line-height:1;}
+.adv-close:hover{color:var(--cream);}
+.adv-m-day{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.adv-m-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,6vw,36px);font-weight:300;color:var(--cream);line-height:1.15;margin-bottom:16px;}
+.adv-m-lyric{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;line-height:1.5;color:var(--blush);margin-bottom:16px;}
+.adv-m-copy{font-size:11px;line-height:2.1;color:rgba(232,180,160,.72);letter-spacing:.3px;margin-bottom:24px;}
+.adv-m-note{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(232,180,160,.45);margin-top:14px;line-height:1.9;}
+.adv-m-ended{display:inline-block;padding:6px 14px;border:1px solid rgba(232,180,200,.2);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(232,180,160,.5);}
+#toast-adv{display:inline-block;background:var(--mag);color:#fff;padding:11px 24px;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0;transition:opacity .4s;pointer-events:none;margin-top:24px;}
+
+.deal-strip{max-width:1084px;margin:-12px auto 30px;padding:16px 22px;border:1px dashed rgba(226,185,121,.45);background:rgba(226,185,121,.06);text-align:center;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--blush);line-height:1.9;cursor:pointer;display:none;}
+.deal-strip strong{color:var(--gold);font-weight:400;}
+.cart-sub-row{display:flex;justify-content:space-between;gap:16px;font-size:11px;letter-spacing:.5px;color:rgba(232,180,160,.6);margin-bottom:10px;text-align:left;}
+.cart-sub-row.deal span:last-child{color:var(--gold);}
+.cart-sub-row.gift span:last-child{color:var(--blush);}
+.cart-deal-hint{font-size:10px;letter-spacing:1px;color:rgba(226,185,121,.75);margin-bottom:18px;text-align:left;line-height:1.8;}
+.oline.odeal span:last-child{color:var(--gold);}
+
+@media(max-width:768px){
+  .adv-mini{display:inline-block;}
+  .adv-teaser,.adv-hero{padding-left:18px;padding-right:18px;}
+  .adv-grid{gap:6px;}
+  .door-sub{display:none;}
+  .door-face::before,.door-face::after{display:none;}
+  .deal-strip{margin-left:18px;margin-right:18px;}
+  .adv-card{padding:42px 22px 28px;}
+}
+
 @media(max-width:768px){
   nav{padding:16px 18px;}
   .nav-links{display:none;}
@@ -266,8 +339,12 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <li><a onclick="showPage('products')">Products</a></li>
 <li><a onclick="showPage('bundles')">Bundles</a></li>
 <li><a onclick="showPage('about')">About</a></li>
+<li><a class="adv-link" onclick="showPage('advent')">🎄 Advent</a></li>
 </ul>
+<div class="nav-right">
+<button class="adv-mini" onclick="showPage('advent')">🎄 Advent</button>
 <button class="cart-btn" onclick="showPage('cart')">♡ Cart <span class="cart-count" id="cart-count">0</span></button>
+</div>
 </nav>
 
 <div class="page active" id="page-home">
@@ -289,6 +366,14 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <div class="ticker"><div class="ticker-inner">
 <span class="ti">High Shine<span class="td">✦</span></span><span class="ti">Non-Sticky<span class="td">✦</span></span><span class="ti">Long Lasting<span class="td">✦</span></span><span class="ti">Made For Our Skin<span class="td">✦</span></span><span class="ti">Handmade<span class="td">✦</span></span><span class="ti">Thoughtfully Formulated<span class="td">✦</span></span><span class="ti">High Shine<span class="td">✦</span></span><span class="ti">Non-Sticky<span class="td">✦</span></span><span class="ti">Long Lasting<span class="td">✦</span></span><span class="ti">Made For Our Skin<span class="td">✦</span></span><span class="ti">Handmade<span class="td">✦</span></span><span class="ti">Thoughtfully Formulated<span class="td">✦</span></span>
 </div></div>
+
+<section class="adv-teaser" id="home-adv">
+<span class="slabel">✦ The TIFFS Advent Calendar ✦</span>
+<h2>25 Days Of <em>Gloss-mas</em></h2>
+<p style="font-size:11px;letter-spacing:1.5px;color:rgba(232,180,160,.5);margin:16px auto 0;max-width:440px;line-height:2;">A new door, a new deal, every day from 1 to 25 December. Each deal lasts 24 hours only.</p>
+<div class="adv-today" id="home-adv-body"></div>
+<div class="prog-wrap"><div class="prog-bar"><div class="prog-fill"></div></div><p class="prog-lbl"></p></div>
+</section>
 
 <section id="featured">
 <span class="slabel">The Collection</span>
@@ -334,6 +419,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 <button class="tab" onclick="filterP('care',this)">Lip Care</button>
 <button class="tab" onclick="filterP('perfume',this)">Perfume</button>
 </div>
+<div class="deal-strip" id="deal-strip" onclick="showPage('advent')"></div>
 
 <div class="pgrid">
 <div class="pcard show" data-cat="gloss" data-name="Coco Haze" data-price="3000" data-swatch="#8B5E3C">
@@ -475,6 +561,7 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 </div>
 <div id="cart-body"></div>
 <div class="cart-totals" id="cart-totals-section" style="display:none;">
+<div id="cart-deal-lines"></div>
 <div class="cart-total-row"><span class="cart-total-label">Total</span><span class="cart-total-amt" id="cart-total-amt">₦0</span></div>
 <button class="checkout-btn" onclick="showPage('checkout')">Proceed to Checkout</button>
 </div>
@@ -550,6 +637,30 @@ footer{background:#0D0115;padding:64px 48px 32px;text-align:center;}
 </div>
 </div>
 <div id="toast-wrap-b"><div id="toast-b" style="display:inline-block;background:var(--mag);color:#fff;padding:11px 24px;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0;transition:opacity .4s;pointer-events:none;margin-top:20px;"></div></div>
+</div>
+</div>
+
+<div class="page" id="page-advent">
+<div class="adv-hero" id="adv-hero">
+<span class="slabel">✦ The TIFFS Advent Calendar ✦</span>
+<h2>25 Days Of <em>Gloss-mas</em></h2>
+<p class="adv-status" id="adv-status"></p>
+<div class="adv-grid" id="adv-grid"></div>
+<div class="adv-legend"><span><i style="background:var(--mag);border-color:var(--gold);"></i>Today</span><span><i></i>Coming soon</span><span><i style="border-style:dashed;"></i>Opened</span></div>
+<div class="prog-wrap"><div class="prog-bar"><div class="prog-fill"></div></div><p class="prog-lbl"></p></div>
+<div id="toast-adv-wrap"><div id="toast-adv"></div></div>
+<p class="adv-fine">One deal per day, valid from 12:00am to 11:59pm (Lagos time). Discounts are applied automatically in your cart, so the amount on the payment page is already your deal price. Free gifts are added to your order. Deals can't be combined with past days' deals.</p>
+</div>
+</div>
+
+<div class="adv-modal" id="adv-modal" onclick="if(event.target===this)closeDoor()">
+<div class="adv-card">
+<button class="adv-close" onclick="closeDoor()" aria-label="Close">×</button>
+<p class="adv-m-day" id="adv-m-day"></p>
+<p class="adv-m-title" id="adv-m-title"></p>
+<p class="adv-m-lyric" id="adv-m-lyric"></p>
+<p class="adv-m-copy" id="adv-m-copy"></p>
+<div id="adv-m-action"></div>
 </div>
 </div>
 
@@ -644,7 +755,8 @@ var cart=[];
 var orderInfo={};
 
 function fmt(n){return '₦'+Number(n).toLocaleString();}
-function total(){return cart.reduce(function(s,i){return s+i.price*i.qty;},0);}
+function subtotal(){return cart.reduce(function(s,i){return s+i.price*i.qty;},0);}
+function total(){return Math.max(0,subtotal()-computeDeal().discount);}
 function totalQty(){return cart.reduce(function(s,i){return s+i.qty;},0);}
 
 function updateNav(){
@@ -664,6 +776,18 @@ function renderCartPage(){
   }
   tots.style.display='block';
   if(totalAmt){totalAmt.textContent=fmt(total());}
+  var dl=document.getElementById('cart-deal-lines');
+  if(dl){
+    var deal=computeDeal(), h='';
+    if(deal.lines.length||deal.gifts.length){
+      h+='<div class="cart-sub-row"><span>Subtotal</span><span>'+fmt(subtotal())+'</span></div>';
+      deal.lines.forEach(function(l){h+='<div class="cart-sub-row deal"><span>🎄 Day '+deal.day.day+' deal: '+l.label+'</span><span>−'+fmt(l.amt)+'</span></div>';});
+      deal.gifts.forEach(function(g){h+='<div class="cart-sub-row gift"><span>🎁 Free '+g+'</span><span>FREE</span></div>';});
+    }else if(deal.day){
+      h+='<p class="cart-deal-hint">🎄 Today\'s Advent deal: '+deal.day.title+'. Add the right items and it applies automatically.</p>';
+    }
+    dl.innerHTML=h;
+  }
   body.innerHTML='';
   cart.forEach(function(item,i){
     var row=document.createElement('div');row.className='citem';
@@ -697,7 +821,7 @@ function addToCart(btn){
   var found=null;
   for(var i=0;i<cart.length;i++){if(cart[i].key===key){found=cart[i];break;}}
   if(found){found.qty+=qty;}
-  else{cart.push({key:key,name:name,price:price,swatch:swatch,qty:qty,flavour:flavour});}
+  else{cart.push({key:key,name:name,price:price,swatch:swatch,qty:qty,flavour:flavour,cat:card.dataset.cat||''});}
   updateNav();
   btn.textContent='Added ✓';btn.classList.add('done');
   setTimeout(function(){btn.textContent='Add to Cart';btn.classList.remove('done');},1400);
@@ -713,7 +837,7 @@ function addBundleToCart(btn){
   var found=null;
   for(var i=0;i<cart.length;i++){if(cart[i].key===name){found=cart[i];break;}}
   if(found){found.qty+=qty;}
-  else{cart.push({key:name,name:name,price:price,swatch:swatch,qty:qty,flavour:''});}
+  else{cart.push({key:name,name:name,price:price,swatch:swatch,qty:qty,flavour:'',cat:'bundle'});}
   updateNav();
   btn.textContent='Added ✓';btn.classList.add('done');
   setTimeout(function(){btn.textContent='Add to Cart';btn.classList.remove('done');},1400);
@@ -738,6 +862,12 @@ function buildCheckoutSummary(){
     var it=cart[i];
     html+='<div class="oline"><span>'+it.name+(it.flavour?' ('+it.flavour+')':'')+' ×'+it.qty+'</span><span>'+fmt(it.price*it.qty)+'</span></div>';
   }
+  var deal=computeDeal();
+  if(deal.lines.length||deal.gifts.length){
+    html+='<div class="oline" style="border-top:1px solid rgba(232,180,200,.08);margin-top:6px;padding-top:8px;"><span>Subtotal</span><span>'+fmt(subtotal())+'</span></div>';
+    deal.lines.forEach(function(l){html+='<div class="oline odeal"><span>🎄 Day '+deal.day.day+': '+l.label+'</span><span>−'+fmt(l.amt)+'</span></div>';});
+    deal.gifts.forEach(function(g){html+='<div class="oline odeal"><span>🎁 Free '+g+'</span><span>FREE</span></div>';});
+  }
   html+='<div class="oline ototal"><span>Total</span><span>'+fmt(total())+'</span></div>';
   summary.innerHTML=html;
 }
@@ -760,7 +890,19 @@ function buildOrderText(){
     var it=cart[i];
     lines.push(it.name+(it.flavour?' ('+it.flavour+')':'')+' ×'+it.qty+' = '+fmt(it.price*it.qty));
   }
+  lines=lines.concat(dealTextLines());
   return lines.join('\n');
+}
+
+function dealTextLines(){
+  var deal=computeDeal(), out=[];
+  if(!deal.lines.length && !deal.gifts.length){return out;}
+  var tag=' (Advent Day '+deal.day.day+', '+deal.day.day+' Dec)'+(ADV_PREVIEW?' [PREVIEW TEST - NOT A REAL DEAL DAY]':'');
+  out.push('');
+  out.push('Subtotal: '+fmt(subtotal()));
+  deal.lines.forEach(function(l){out.push('🎄 '+l.label+tag+': -'+fmt(l.amt));});
+  deal.gifts.forEach(function(g){out.push('🎁 FREE '+g+tag);});
+  return out;
 }
 
 function buildWhatsAppMessage(){
@@ -774,6 +916,8 @@ function buildWhatsAppMessage(){
     var it=cart[i];
     msg+='• '+it.name+(it.flavour?' ('+it.flavour+')':'')+' ×'+it.qty+' = '+fmt(it.price*it.qty)+'\n';
   }
+  var dlines=dealTextLines();
+  if(dlines.length){msg+=dlines.join('\n')+'\n';}
   msg+='\n*TOTAL: '+fmt(total())+'*';
   msg+='\n\n✅ Payment of '+fmt(total())+' sent to ACCESS BANK 1828128839 — BOLUWATIFE KANYINSOLA AKINJEJI';
   return msg;
@@ -860,6 +1004,7 @@ function showPage(name){
   window.scrollTo({top:0,behavior:'smooth'});
   if(name==='cart'){renderCartPage();}
   if(name==='checkout'){buildCheckoutSummary();}
+  if(name==='advent'){renderAdvent();}
 }
 
 function filterP(cat,btn){
@@ -880,6 +1025,267 @@ function showToast(msg,id){
   clearTimeout(toastTimers[id]);
   toastTimers[id]=setTimeout(function(){t.style.opacity='0';t.classList.remove('show');},2000);
 }
+
+/* =====================================================
+   TIFFS ADVENT CALENDAR
+   -----------------------------------------------------
+   ✏️  UPDATE THIS NUMBER as orders come in, then redeploy.
+   It powers the "x / 100 orders" progress bar.
+   ===================================================== */
+var ORDERS_SO_FAR = 0;
+var ORDER_GOAL = 100;
+
+/* Each day: title, optional lyric, copy, which tab "Shop this deal" opens,
+   and rules that the cart uses to work out the discount automatically.
+   Rule types:
+     pctSingle – % off ONE item (the most expensive eligible one)
+     pctAll    – % off every eligible item
+     bundle    – fixed price for a set of items (repeats if they buy multiple sets)
+     gift      – free item added to the order when the condition is met
+   {orders} in the copy is replaced with ORDERS_SO_FAR. */
+var GLOSS={cats:['gloss']}, BALM={cats:['balm']}, PERF={cats:['perfume']};
+var ADVENT_DAYS=[
+ {day:1,title:'15% OFF Any Single Item',lyric:'🎵 On the first day of Christmas, TIFFS gave to me… 15% off ANY single item!',copy:'Spend over ₦5k and I\'m throwing in a FREE Lip Mask too.\nWe\'re at {orders}/100 orders — let\'s go!',shop:'all',
+  rules:[{type:'pctSingle',pct:15},{type:'gift',item:'Lip Mask',over:5000}]},
+ {day:2,title:'20% OFF Any Perfume Oil',copy:'Smell expensive for less today.\nThese bottles are moving fast — and remember, Order #100 gets their cart for FREE (up to ₦10k)!',shop:'perfume',
+  rules:[{type:'pctAll',pct:20,cats:['perfume'],label:'20% off perfume oils'}]},
+ {day:3,title:'Buy 1 Gloss, Get a Lip Balm 20% Off',copy:'Buy any gloss today and get a lip balm for ₦500 less.\nKeep one in your bag, one by your bed. Let\'s get to 100!',shop:'all',
+  rules:[{type:'bundle',price:5000,slots:[GLOSS,BALM],label:'Gloss + Lip Balm 20% off'}]},
+ {day:4,title:'2 Glosses for ₦5,000',lyric:'🎵 On the fourth day of Christmas, TIFFS gave to me… two glosses for just ₦5k!',copy:'Can\'t choose just one shade? Grab any 2 glosses for ₦5,000.\nOne for you, one for your bestie (or keep both, I won\'t judge 🤫)',shop:'gloss',
+  rules:[{type:'bundle',price:5000,slots:[GLOSS,GLOSS],label:'2 Glosses for ₦5,000'}]},
+ {day:5,title:'15% OFF All Lip Balms',copy:'Stock up on the good stuff.\nAll lip balms are 15% off, today only. Your lips will literally thank you 🤭',shop:'balm',
+  rules:[{type:'pctAll',pct:15,cats:['balm'],label:'15% off lip balms'}]},
+ {day:6,title:'Shine & Scent Duo — ₦8,500',copy:'Grab any perfume oil + any gloss for ₦8,500.\nSmell good, look good, glow up.',shop:'all',
+  rules:[{type:'bundle',price:8500,slots:[PERF,GLOSS],label:'Shine & Scent Duo'}]},
+ {day:7,title:'20% OFF Any Item',copy:'One week down! Surprise — for 24 hours only, take 20% off any gloss, perfume oil or balm.\nSingle item? Discounted. Let\'s get this money 💸',shop:'all',
+  rules:[{type:'pctSingle',pct:20}]},
+ {day:8,title:'Coco Haze Spotlight',copy:'Meet Coco Haze — the chocolate lip combo.\nGrab two of this shade today and get a FREE Lip Mask.',shop:'gloss',
+  rules:[{type:'gift',item:'Lip Mask',names:['Coco Haze'],qty:2}]},
+ {day:9,title:'Terracotta Rose + Sway — ₦5,500',copy:'Did you know T-Rose smells like a vanilla latte and Sway smells like strawberry?\nGrab Terracotta Rose and Sway together for ₦5,500, today only.',shop:'gloss',
+  rules:[{type:'bundle',price:5500,slots:[{names:['Terracotta Rose']},{names:['Sway']}],label:'T-Rose + Sway duo'}]},
+ {day:10,title:'3 Glosses for ₦8,000',copy:'Pick any 3 shades for ₦8,000. Keep two, gift one — or keep all three.\nWe\'re moving closer to 100! 💋',shop:'gloss',
+  rules:[{type:'bundle',price:8000,slots:[GLOSS,GLOSS,GLOSS],label:'3 Glosses for ₦8,000'}]},
+ {day:11,title:'Perfume Oil + Serendipity — ₦8,000',copy:'Sweet, soft and unforgettable.\nGrab any perfume oil + Serendipity gloss for ₦8,000.',shop:'all',
+  rules:[{type:'bundle',price:8000,slots:[PERF,{names:['Serendipity']}],label:'Perfume Oil + Serendipity'}]},
+ {day:12,title:'25% OFF Any Item — Halfway Hype',lyric:'🎵 On the twelfth day of Christmas, TIFFS gave to me… a massive halfway discount!',copy:'We\'re officially halfway to Christmas!\nTo celebrate, take 25% off ANY single item today.',shop:'all',
+  rules:[{type:'pctSingle',pct:25}]},
+ {day:13,title:'Lip Balm + Perfume Oil — ₦7,500',copy:'Grab any perfume oil + a lip balm for ₦7,500.\nKeep the lips hydrated and smell good doing it.',shop:'all',
+  rules:[{type:'bundle',price:7500,slots:[PERF,BALM],label:'Lip Balm + Perfume Oil'}]},
+ {day:14,title:'Crystal Clear Layering Duo — ₦5,000',copy:'Crystal Clear is the secret top coat.\nGrab it with any coloured gloss for ₦5,000 and layer it on top for extra glass-like shine ✨',shop:'gloss',
+  rules:[{type:'bundle',price:5000,slots:[{names:['Crystal Clear']},GLOSS],label:'Crystal Clear layering duo'}]},
+ {day:15,title:'FREE Lip Brush',copy:'Spend ₦6,000 or more today and I\'m adding a FREE Lip Brush to your order.\nPrecision application — on me.',shop:'all',
+  rules:[{type:'gift',item:'Lip Brush',atLeast:6000}]},
+ {day:16,title:'Ms. Girl + Deux — ₦10,500',copy:'Soft & feminine or fresh & bold? Don\'t choose.\nTake both perfume oils home for ₦10,500 (save ₦1,500). Wear one, gift one.',shop:'perfume',
+  rules:[{type:'bundle',price:10500,slots:[{names:['Ms. Girl Perfume Oil']},{names:['Deux Perfume Oil']}],label:'Ms. Girl + Deux'}]},
+ {day:17,title:'Overnight Glow Kit — ₦3,000',copy:'Lip Balm + Lip Mask + Lip Brush for ₦3,000 (usually ₦3,600).\nBalm by day, mask by night, brush for the perfect finish. Harmattan lips? Not this year.',shop:'all',
+  rules:[{type:'bundle',price:3000,slots:[BALM,{names:['Lip Mask']},{names:['Lip Brush']}],label:'Overnight Glow Kit'}]},
+ {day:18,title:'Starter Kit for ₦5,000',copy:'Gifting season is officially here.\nThe Starter Kit (any gloss + Classic Lip Balm) drops to ₦5,000 today — the easiest present you\'ll wrap this year 🎁',shop:'bundles',
+  rules:[{type:'bundle',price:5000,slots:[{names:['Starter Kit (1 Gloss + 1 Lip Balm)']}],label:'Starter Kit for ₦5,000'}]},
+ {day:19,title:'Shade Squad: 4 Glosses for ₦10,000',copy:'Get the whole squad glossy. Any 4 glosses for ₦10,000 — that\'s ₦2,500 each.\nGroup chat, assemble 💋',shop:'gloss',
+  rules:[{type:'bundle',price:10000,slots:[GLOSS,GLOSS,GLOSS,GLOSS],label:'Shade Squad (4 glosses)'}]},
+ {day:20,title:'Serendipity Spotlight — 20% Off',copy:'Bold berry-magenta is THE Christmas lip.\nEvery Serendipity gloss is 20% off today. Owambe-ready.',shop:'gloss',
+  rules:[{type:'pctAll',pct:20,names:['Serendipity'],label:'20% off Serendipity'}]},
+ {day:21,title:'FREE Lip Mask With Every Order',copy:'Just 4 days to go!\nEvery order today gets a FREE Lip Mask — no minimum spend. We\'re at {orders}/100… Order #100 could be you 👀',shop:'all',
+  rules:[{type:'gift',item:'Lip Mask',atLeast:1}]},
+ {day:22,title:'Full Lip Care Set — ₦11,000',copy:'The whole routine: 3 glosses, Classic Lip Balm, Lip Mask and Lip Brush for ₦11,000 (usually ₦12,600).\nThe ultimate gift — even if it\'s for yourself.',shop:'bundles',
+  rules:[{type:'bundle',price:11000,slots:[{names:['Full Lip Care Set (3 Glosses + Lip Balm + Mask + Brush)']}],label:'Full Lip Care Set for ₦11,000'}]},
+ {day:23,title:'Last-Minute Gift Box — ₦10,000',copy:'Running out of time? I\'ve got you.\nAny perfume oil + any gloss + a lip balm for ₦10,000 (usually ₦11,500). Gift sorted.',shop:'all',
+  rules:[{type:'bundle',price:10000,slots:[PERF,GLOSS,BALM],label:'Last-Minute Gift Box'}]},
+ {day:24,title:'Christmas Eve: 30% OFF Any Item',lyric:'🎵 On Christmas Eve, TIFFS gave to me… 30% off and a little something free!',copy:'The night before Christmas — take 30% off any single item.\nSpend over ₦5k and you get a FREE Lip Mask too.',shop:'all',
+  rules:[{type:'pctSingle',pct:30},{type:'gift',item:'Lip Mask',over:5000}]},
+ {day:25,title:'Merry Christmas! 25% OFF Everything',lyric:'🎵 On the twenty-fifth day of Christmas, TIFFS gave to me… 25% off EVERYTHING!',copy:'25% off your whole cart on the 25th.\nThank you for making this season so special. From my hands to your lips — Merry Christmas! 🎄💋',shop:'all',
+  rules:[{type:'pctAll',pct:25,cats:['gloss','balm','care','perfume','bundle'],label:'25% off everything'}]}
+];
+
+/* ---- Dates (Lagos time, UTC+1) ---- */
+function lagosNow(){var d=new Date(Date.now()+3600000);return {y:d.getUTCFullYear(),m:d.getUTCMonth()+1,d:d.getUTCDate()};}
+/* Preview any day for testing: add ?advent=7 to the end of the website link. */
+var ADV_PREVIEW=(function(){try{var v=parseInt(new URLSearchParams(window.location.search).get('advent'),10);return (v>=1&&v<=25)?v:0;}catch(e){return 0;}})();
+function adventDay(){
+  if(ADV_PREVIEW){return ADV_PREVIEW;}
+  var t=lagosNow();
+  if(t.m===12){return t.d<=25?t.d:26;}
+  return 0; // not started yet
+}
+function daysUntilAdvent(){
+  var t=lagosNow();var now=Date.UTC(t.y,t.m-1,t.d);
+  return Math.round((Date.UTC(t.y,11,1)-now)/86400000);
+}
+function activeDeal(){var d=adventDay();return (d>=1&&d<=25)?ADVENT_DAYS[d-1]:null;}
+
+/* ---- Deal engine ---- */
+var STD_CATS=['gloss','balm','care','perfume'];
+function cartUnits(){
+  var u=[];
+  cart.forEach(function(it){for(var k=0;k<it.qty;k++){u.push({name:it.name,cat:it.cat||'',price:it.price,used:false});}});
+  u.sort(function(a,b){return b.price-a.price;});
+  return u;
+}
+function unitMatches(u,f){
+  if(f.cats && f.cats.indexOf(u.cat)===-1){return false;}
+  if(f.names && f.names.indexOf(u.name)===-1){return false;}
+  return true;
+}
+function shortName(n){return n.replace(/ \(.*\)$/,'');}
+function computeDeal(){
+  var res={discount:0,lines:[],gifts:[],day:null};
+  var deal=activeDeal();
+  if(!deal){return res;}
+  res.day=deal;
+  if(cart.length===0){return res;}
+  var units=cartUnits(), sub=subtotal();
+  deal.rules.forEach(function(r){
+    if(r.type==='pctSingle'){
+      var f={cats:r.cats||STD_CATS};
+      for(var i=0;i<units.length;i++){
+        var u=units[i];
+        if(!u.used && unitMatches(u,f)){
+          var d=Math.round(u.price*r.pct/100);u.used=true;
+          res.discount+=d;res.lines.push({label:r.pct+'% off '+shortName(u.name),amt:d});break;
+        }
+      }
+    }else if(r.type==='pctAll'){
+      var d2=0;
+      units.forEach(function(u){if(!u.used && unitMatches(u,r)){d2+=Math.round(u.price*r.pct/100);u.used=true;}});
+      if(d2>0){res.discount+=d2;res.lines.push({label:r.label,amt:d2});}
+    }else if(r.type==='bundle'){
+      var times=0,d3=0;
+      while(true){
+        var picked=[];
+        var ok=r.slots.every(function(s){
+          for(var i=0;i<units.length;i++){
+            var u=units[i];
+            if(!u.used && picked.indexOf(u)===-1 && unitMatches(u,s)){picked.push(u);return true;}
+          }
+          return false;
+        });
+        if(!ok){break;}
+        var sum=picked.reduce(function(a,u){return a+u.price;},0);
+        if(sum<=r.price){break;}
+        picked.forEach(function(u){u.used=true;});
+        d3+=sum-r.price;times++;
+      }
+      if(times){res.discount+=d3;res.lines.push({label:r.label+(times>1?' ×'+times:''),amt:d3});}
+    }else if(r.type==='gift'){
+      var g=false;
+      if(r.over!=null){g=sub>r.over;}
+      if(r.atLeast!=null){g=sub>=r.atLeast;}
+      if(r.names){
+        var q=0;cart.forEach(function(it){if(r.names.indexOf(it.name)>-1){q+=it.qty;}});
+        g=q>=(r.qty||1);
+      }
+      if(g){res.gifts.push(r.item);}
+    }
+  });
+  return res;
+}
+
+/* ---- Calendar UI ---- */
+var DOOR_ORDER=[7,18,3,12,22,1,15,9,24,5,20,11,25,2,16,8,13,21,4,19,10,23,6,14,17];
+var openDealDay=null;
+function fillOrders(s){return s.replace(/\{orders\}/g,ORDERS_SO_FAR);}
+function nl2br(s){return s.replace(/\n/g,'<br/>');}
+
+function renderProgress(){
+  var pct=Math.min(100,Math.round(ORDERS_SO_FAR/ORDER_GOAL*100));
+  document.querySelectorAll('.prog-fill').forEach(function(f){f.style.width=pct+'%';});
+  document.querySelectorAll('.prog-lbl').forEach(function(l){
+    l.innerHTML='<strong>'+ORDERS_SO_FAR+' / '+ORDER_GOAL+'</strong> orders · Order #100 gets their cart FREE (up to ₦10k)';
+  });
+}
+
+function renderAdvent(){
+  var g=document.getElementById('adv-grid');
+  var st=document.getElementById('adv-status');
+  if(!g){return;}
+  var cd=adventDay();
+  g.innerHTML='';
+  DOOR_ORDER.forEach(function(n){
+    var state=(cd===0)?'locked':(cd===26||n<cd)?'past':(n===cd)?'today':'locked';
+    var b=document.createElement('button');b.type='button';
+    b.className='door '+state+(n===25?' xmas':'');
+    b.setAttribute('aria-label','Day '+n+(state==='locked'?' (locked)':''));
+    var sub=state==='today'?'Open me ✦':state==='past'?'Opened':(n===25?'Christmas':'Dec '+n);
+    b.innerHTML='<span class="door-face"><span class="door-num">'+n+'</span><span class="door-sub">'+sub+'</span></span>';
+    b.onclick=function(){openDoor(n,state);};
+    g.appendChild(b);
+  });
+  if(st){
+    var txt;
+    if(cd===0){var dd=daysUntilAdvent();txt='The first door opens on 1 December · '+dd+' day'+(dd===1?'':'s')+' to go';}
+    else if(cd===26){txt='That\'s a wrap! Thank you for an amazing Christmas 💋';}
+    else{txt='Day '+cd+' of 25 · Today\'s door is glowing — tap it'+(cd===25?' 🎄':'');}
+    if(ADV_PREVIEW){txt+=' · (Preview mode)';}
+    st.textContent=txt;
+  }
+  renderProgress();
+}
+
+function openDoor(n,state){
+  if(state==='locked'){showToast('No peeking! Door '+n+' opens on '+n+' December 👀','toast-adv');return;}
+  var d=ADVENT_DAYS[n-1];openDealDay=d;
+  document.getElementById('adv-m-day').textContent='Day '+n+' · '+n+' December';
+  document.getElementById('adv-m-title').textContent=d.title;
+  var ly=document.getElementById('adv-m-lyric');
+  ly.textContent=d.lyric||'';ly.style.display=d.lyric?'block':'none';
+  document.getElementById('adv-m-copy').innerHTML=nl2br(fillOrders(d.copy));
+  var act=document.getElementById('adv-m-action');
+  if(state==='today'){
+    act.innerHTML='<button class="btn-p" onclick="shopDeal()">Shop This Deal</button><p class="adv-m-note">Today only · Applied automatically in your cart</p>';
+  }else{
+    act.innerHTML='<span class="adv-m-ended">This deal has ended</span><p class="adv-m-note">Check today\'s glowing door for the current deal</p>';
+  }
+  document.getElementById('adv-modal').classList.add('open');
+}
+function closeDoor(){document.getElementById('adv-modal').classList.remove('open');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeDoor();}});
+
+function shopDeal(){
+  closeDoor();
+  var d=openDealDay||activeDeal();if(!d){return;}
+  if(d.shop==='bundles'){showPage('bundles');return;}
+  showPage('products');
+  var tab=null;
+  document.querySelectorAll('.tab').forEach(function(t){if((t.getAttribute('onclick')||'').indexOf("'"+d.shop+"'")>-1){tab=t;}});
+  filterP(d.shop,tab);
+}
+
+function renderAdventTeaser(){
+  var body=document.getElementById('home-adv-body');
+  var cd=adventDay(), deal=activeDeal();
+  if(body){
+    if(deal){
+      body.innerHTML='<p class="adv-today-day">Day '+deal.day+' · Today\'s Deal</p><p class="adv-today-title">'+deal.title+'</p><button class="btn-p" onclick="showPage(\'advent\');setTimeout(function(){openDoor('+deal.day+',\'today\');},350);">Open Today\'s Door</button>';
+    }else if(cd===0){
+      var dd=daysUntilAdvent();
+      body.innerHTML='<p class="adv-today-day">Opens 1 December</p><p class="adv-today-title">'+dd+' day'+(dd===1?'':'s')+' until the first door</p><button class="btn-g" onclick="showPage(\'advent\')">Peek At The Calendar</button>';
+    }else{
+      body.innerHTML='<p class="adv-today-day">That\'s a wrap</p><p class="adv-today-title">Thank you for a beautiful Gloss-mas 💋</p><button class="btn-g" onclick="showPage(\'products\')">Shop The Collection</button>';
+    }
+  }
+  var strip=document.getElementById('deal-strip');
+  if(strip){
+    if(deal){strip.innerHTML='🎄 <strong>Advent Day '+deal.day+':</strong> '+deal.title+' — applied automatically in your cart · Tap to see the calendar';strip.style.display='block';}
+    else{strip.style.display='none';}
+  }
+  renderProgress();
+}
+
+(function(){
+  ['adv-hero','home-adv'].forEach(function(id){
+    var w=document.getElementById(id);if(!w){return;}
+    for(var i=0;i<18;i++){
+      var s=document.createElement('span');s.className='snow';s.textContent=Math.random()<.5?'❄':'✦';
+      s.style.left=Math.random()*100+'%';
+      s.style.fontSize=(6+Math.random()*8)+'px';
+      s.style.animationDuration=(9+Math.random()*10)+'s';
+      s.style.animationDelay=(-Math.random()*15)+'s';
+      w.appendChild(s);
+    }
+  });
+  renderAdventTeaser();
+  if(ADV_PREVIEW){showPage('advent');}
+})();
 </script>
 </body>
 </html>
